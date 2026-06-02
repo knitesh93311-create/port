@@ -20,8 +20,8 @@ export const personalInfo = {
   location: "Bangalore, India",
   availability: "Available For Full-Time Opportunities",
   resumeUrl: "/resume.pdf",
-  heroImage: "",
-  aboutImage: "",
+  heroImage: "/hero.jpg",
+  aboutImage: "/about.jpg",
 };
 
 export const trustedTechnologies = [

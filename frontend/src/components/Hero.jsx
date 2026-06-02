@@ -22,35 +22,7 @@ const floatAnimation = (delay) => ({
 });
 
 export default function Hero() {
-  const [imageReady, setImageReady] = useState(false);
-  const [imageSrc, setImageSrc] = useState('');
-
-  // Preload the hero image — use localStorage cache for instant repeat visits
-  useEffect(() => {
-    const preload = (url) => {
-      if (!url) return;
-      const img = new window.Image();
-      img.onload = () => {
-        setImageSrc(url);
-        setImageReady(true);
-        try { localStorage.setItem('hero_image_cache', url); } catch (_) {}
-      };
-      img.onerror = () => {};
-      img.src = url;
-    };
-
-    // 1. Try cached image first (instant on repeat visits)
-    try {
-      const cached = localStorage.getItem('hero_image_cache');
-      if (cached) preload(cached);
-    } catch (_) {}
-
-    // 2. Also try the live source (will override cache if different)
-    const src = personalInfo.heroImage;
-    if (src && src !== imageSrc) {
-      preload(src);
-    }
-  });
+  const currentHeroImage = personalInfo.heroImage || "/hero.jpg";
 
   return (
     <section 
@@ -207,8 +179,8 @@ export default function Hero() {
         <div className="lg:col-span-5 relative flex justify-center items-center h-[450px] lg:h-[550px] mt-10 lg:mt-0">
           
           <AnimatePresence mode="wait">
-            {imageReady && imageSrc ? (
-              /* Main Visual Photo Card — only shown after image is fully loaded */
+            {currentHeroImage ? (
+              /* Main Visual Photo Card — only shown if image is available */
               <motion.div
                 key="hero-photo"
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -218,7 +190,7 @@ export default function Hero() {
                 className="w-full max-w-[420px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl relative group border border-slate-200/50"
               >
                 <img 
-                  src={imageSrc} 
+                  src={currentHeroImage} 
                   alt={personalInfo.name || "Nitesh Kumar"} 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />

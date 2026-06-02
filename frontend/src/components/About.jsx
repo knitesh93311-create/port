@@ -28,10 +28,10 @@ export default function About() {
             
             {/* Main Interactive Portrait Art */}
             <div className="relative bg-gradient-to-b from-slate-50 to-slate-100 rounded-3xl border border-slate-200/80 shadow-md aspect-[4/5] flex flex-col justify-between overflow-hidden group">
-              {personalInfo.aboutImage ? (
+              {(personalInfo.aboutImage || "/about.jpg") ? (
                 <>
                   <img 
-                    src={personalInfo.aboutImage} 
+                    src={personalInfo.aboutImage || "/about.jpg"} 
                     alt={personalInfo.name || "Nitesh Kumar"} 
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />

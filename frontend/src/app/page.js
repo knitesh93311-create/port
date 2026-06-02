@@ -18,15 +18,30 @@ import {
   experienceTimeline,
 } from '@/data/portfolioData';
 
-// Icon resolver: maps iconName strings from the backend to actual React icon components
-import { resolveItemIcon, resolveSkillsIcons } from '@/data/iconResolver';
+
+
+async function fetchWithTimeout(url, options = {}, timeout = 800) {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeout);
+  try {
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal
+    });
+    clearTimeout(id);
+    return response;
+  } catch (error) {
+    clearTimeout(id);
+    throw error;
+  }
+}
 
 async function getPortfolioData() {
   const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
   try {
-    const res = await fetch(`${apiBase}/api/portfolio`, {
+    const res = await fetchWithTimeout(`${apiBase}/api/portfolio`, {
       next: { revalidate: 60 } // Cache data for 60 seconds
-    });
+    }, 800);
     if (res.ok) {
       return await res.json();
     }
@@ -39,9 +54,9 @@ async function getPortfolioData() {
 async function getProjectsData() {
   const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
   try {
-    const res = await fetch(`${apiBase}/api/projects`, {
+    const res = await fetchWithTimeout(`${apiBase}/api/projects`, {
       next: { revalidate: 60 } // Cache projects for 60 seconds
-    });
+    }, 800);
     if (res.ok) {
       return await res.json();
     }
@@ -67,12 +82,12 @@ export default async function Home() {
 
   // 3. Merge Skills Data
   const mergedSkillsData = portfolio?.skillsData 
-    ? resolveSkillsIcons(portfolio.skillsData) 
+    ? portfolio.skillsData 
     : skillsData;
 
   // 4. Merge Experience Timeline
   const mergedExperienceTimeline = portfolio?.experienceTimeline && Array.isArray(portfolio.experienceTimeline)
-    ? portfolio.experienceTimeline.map(resolveItemIcon)
+    ? portfolio.experienceTimeline
     : experienceTimeline;
 
   // 5. Merge Projects Data

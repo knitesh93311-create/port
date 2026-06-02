@@ -2,11 +2,10 @@
 
 import React from 'react';
 import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from 'react-icons/fa';
-import usePortfolio from '@/hooks/usePortfolio';
-// duplicate import removed
+import { personalInfo as staticPersonalInfo } from '@/data/portfolioData';
 
-export default function Footer() {
-  const { portfolio } = usePortfolio();
+export default function Footer({ personalInfo: propPersonalInfo }) {
+  const personalInfo = propPersonalInfo || staticPersonalInfo;
   return (
     <footer className="bg-[#0F172A] text-slate-400 border-t border-slate-800 py-12 md:py-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
@@ -51,7 +50,7 @@ export default function Footer() {
             </h4>
             <div className="flex gap-3 mb-4">
               <a 
-                href={portfolio?.personalInfo?.github || '#'}
+                href={personalInfo?.github || '#'}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 bg-slate-900 border border-slate-850 hover:border-slate-750 text-slate-400 hover:text-white rounded-lg transition-colors"
@@ -60,7 +59,7 @@ export default function Footer() {
                 <FaGithub size={15} />
               </a>
               <a 
-                href={portfolio?.personalInfo?.linkedin || '#'}
+                href={personalInfo?.linkedin || '#'}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 bg-slate-900 border border-slate-850 hover:border-slate-750 text-[#0077B5] hover:text-white rounded-lg transition-colors"
@@ -69,7 +68,7 @@ export default function Footer() {
                 <FaLinkedin size={15} />
               </a>
               <a 
-                href={`mailto:${portfolio?.personalInfo?.email || ''}`}
+                href={personalInfo?.email ? `mailto:${personalInfo.email}` : '#'}
                 className="p-2.5 bg-slate-900 border border-slate-850 hover:border-slate-750 text-[#EA4335] hover:text-white rounded-lg transition-colors"
                 aria-label="Email"
               >
@@ -78,7 +77,7 @@ export default function Footer() {
             </div>
 
             <a
-              href={portfolio?.personalInfo?.resumeUrl || '#'}
+              href={personalInfo?.resumeUrl || '#'}
               target="_blank"
               rel="noopener noreferrer"
               download="Nitesh_Kumar_Resume.pdf"

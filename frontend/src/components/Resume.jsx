@@ -4,9 +4,10 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaDownload, FaEye, FaEnvelope, FaFileAlt } from 'react-icons/fa';
 import { IoClose } from 'react-icons/io5';
-import { personalInfo } from '@/data/portfolioData';
+import { personalInfo as staticPersonalInfo } from '@/data/portfolioData';
 
-export default function Resume() {
+export default function Resume({ personalInfo: propPersonalInfo }) {
+  const personalInfo = propPersonalInfo || staticPersonalInfo;
   const [modalOpen, setModalOpen] = useState(false);
 
   return (

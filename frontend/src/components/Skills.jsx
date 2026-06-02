@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { skillsData } from '@/data/portfolioData';
+import { skillsData as staticSkillsData } from '@/data/portfolioData';
+import { resolveSkillsIcons } from '@/data/iconResolver';
 
 const categoryLabels = {
   frontend: "Frontend Technologies",
@@ -18,7 +19,9 @@ const categoryColorGradients = {
   tools: "from-purple-500 to-pink-500"
 };
 
-export default function Skills() {
+export default function Skills({ skillsData: propSkillsData }) {
+  const rawSkillsData = propSkillsData || staticSkillsData;
+  const skillsData = resolveSkillsIcons(rawSkillsData);
   const [hoveredSkill, setHoveredSkill] = useState(null);
 
   return (

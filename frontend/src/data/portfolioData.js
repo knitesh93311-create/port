@@ -47,28 +47,28 @@ export const aboutStats = [
 
 export const skillsData = {
   frontend: [
-    { name: "React.js", level: 95, icon: FaReact },
-    { name: "JavaScript (ES6+)", level: 90, icon: SiJavascript },
-    { name: "Tailwind CSS", level: 95, icon: SiTailwindcss },
-    { name: "HTML5", level: 95, icon: SiHtml5 },
-    { name: "CSS3 / Sass", level: 88, icon: SiCss }
+    { name: "React.js", level: 95, iconName: "FaReact" },
+    { name: "JavaScript (ES6+)", level: 90, iconName: "SiJavascript" },
+    { name: "Tailwind CSS", level: 95, iconName: "SiTailwindcss" },
+    { name: "HTML5", level: 95, iconName: "SiHtml5" },
+    { name: "CSS3 / Sass", level: 88, iconName: "SiCss" }
   ],
   backend: [
-    { name: "Node.js", level: 92, icon: FaNodeJs },
-    { name: "Express.js", level: 90, icon: SiExpress },
-    { name: "REST APIs", level: 95, icon: FaServer },
-    { name: "Next.js", level: 85, icon: SiNextdotjs }
+    { name: "Node.js", level: 92, iconName: "FaNodeJs" },
+    { name: "Express.js", level: 90, iconName: "SiExpress" },
+    { name: "REST APIs", level: 95, iconName: "FaServer" },
+    { name: "Next.js", level: 85, iconName: "SiNextdotjs" }
   ],
   database: [
-    { name: "MongoDB", level: 90, icon: SiMongodb },
-    { name: "MySQL", level: 80, icon: SiMysql },
-    { name: "Redis", level: 75, icon: FaDatabase }
+    { name: "MongoDB", level: 90, iconName: "SiMongodb" },
+    { name: "MySQL", level: 80, iconName: "SiMysql" },
+    { name: "Redis", level: 75, iconName: "FaDatabase" }
   ],
   tools: [
-    { name: "Git & GitHub", level: 92, icon: FaGithub },
-    { name: "Postman", level: 95, icon: SiPostman },
-    { name: "Docker", level: 78, icon: FaDocker },
-    { name: "Firebase", level: 85, icon: SiFirebase }
+    { name: "Git & GitHub", level: 92, iconName: "FaGithub" },
+    { name: "Postman", level: 95, iconName: "SiPostman" },
+    { name: "Docker", level: 78, iconName: "FaDocker" },
+    { name: "Firebase", level: 85, iconName: "SiFirebase" }
   ]
 };
 
@@ -138,7 +138,7 @@ export const experienceTimeline = [
     type: "Internship Experience",
     description: "Developed and optimized key features for high-traffic client websites. Built secure authentication, managed database migrations, and redesigned core dashboard components which reduced load times by 35%.",
     color: "border-blue-500",
-    icon: FaBriefcase
+    iconName: "FaBriefcase"
   },
   {
     id: 2,
@@ -148,7 +148,7 @@ export const experienceTimeline = [
     type: "Freelance Work",
     description: "Delivered 10+ custom web applications for international startups. Designed custom REST APIs, automated workflows with third-party webhooks, and integrated secure payment processing with Stripe.",
     color: "border-cyan-500",
-    icon: FaCode
+    iconName: "FaCode"
   },
   {
     id: 3,
@@ -158,7 +158,7 @@ export const experienceTimeline = [
     type: "Open Source Contributions",
     description: "Contributed components, documentation fixes, and accessibility audits to popular UI libraries and developer utility toolkits. Maintained a repository of highly reusable MERN boilerplates with 200+ stars.",
     color: "border-emerald-500",
-    icon: FaGithub
+    iconName: "FaGithub"
   },
   {
     id: 4,
@@ -168,7 +168,7 @@ export const experienceTimeline = [
     type: "Training & Certifications",
     description: "Completed rigorous 600-hour professional developer track focusing on backend design patterns, microservices architecture, and state management optimization.",
     color: "border-purple-500",
-    icon: FaGraduationCap
+    iconName: "FaGraduationCap"
   }
 ];
 

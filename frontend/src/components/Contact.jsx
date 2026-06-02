@@ -3,9 +3,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaEnvelope, FaLinkedin, FaGithub, FaMapMarkerAlt, FaPaperPlane, FaCheckCircle, FaSpinner } from 'react-icons/fa';
-import { personalInfo } from '@/data/portfolioData';
+import { personalInfo as staticPersonalInfo } from '@/data/portfolioData';
 
-export default function Contact() {
+export default function Contact({ personalInfo: propPersonalInfo }) {
+  const personalInfo = propPersonalInfo || staticPersonalInfo;
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});

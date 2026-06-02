@@ -2,9 +2,10 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { servicesData } from '@/data/portfolioData';
+import { servicesData as staticServicesData } from '@/data/portfolioData';
 
-export default function Services() {
+export default function Services({ servicesData: propServicesData }) {
+  const servicesData = propServicesData || staticServicesData;
   return (
     <section id="services" className="py-24 bg-white relative">
       <div className="max-w-7xl mx-auto px-6">

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { projectsData } from '@/data/portfolioData';
+import { projectsData as staticProjectsData } from '@/data/portfolioData';
 import { FaGithub, FaExternalLinkAlt, FaBrain, FaShoppingBag, FaComments, FaBriefcase, FaGraduationCap, FaProjectDiagram } from 'react-icons/fa';
 
 const visualMockMap = {
@@ -44,7 +44,8 @@ const visualMockMap = {
   }
 };
 
-export default function Projects() {
+export default function Projects({ projectsData: propProjectsData }) {
+  const projects = propProjectsData || staticProjectsData;
   return (
     <section id="projects" className="py-24 bg-white relative">
       <div className="max-w-7xl mx-auto px-6">
@@ -64,7 +65,7 @@ export default function Projects() {
 
         {/* Projects Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projectsData.map((project, index) => {
+          {projects.map((project, index) => {
             const visual = visualMockMap[project.id] || {
               icon: FaProjectDiagram,
               gradient: "from-blue-500/20 to-cyan-500/20",

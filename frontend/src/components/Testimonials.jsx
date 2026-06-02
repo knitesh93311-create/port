@@ -2,10 +2,11 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { testimonialsData } from '@/data/portfolioData';
+import { testimonialsData as staticTestimonialsData } from '@/data/portfolioData';
 import { FaChevronLeft, FaChevronRight, FaQuoteLeft, FaStar } from 'react-icons/fa';
 
-export default function Testimonials() {
+export default function Testimonials({ testimonialsData: propTestimonialsData }) {
+  const testimonialsData = propTestimonialsData || staticTestimonialsData;
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {

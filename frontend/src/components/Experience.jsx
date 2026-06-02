@@ -2,9 +2,12 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { experienceTimeline } from '@/data/portfolioData';
+import { experienceTimeline as staticExperienceTimeline } from '@/data/portfolioData';
+import { resolveItemIcon } from '@/data/iconResolver';
 
-export default function Experience() {
+export default function Experience({ experienceTimeline: propExperienceTimeline }) {
+  const rawExperienceTimeline = propExperienceTimeline || staticExperienceTimeline;
+  const experienceTimeline = (rawExperienceTimeline || []).map(resolveItemIcon);
   return (
     <section id="experience" className="py-24 bg-slate-50 relative overflow-hidden">
       

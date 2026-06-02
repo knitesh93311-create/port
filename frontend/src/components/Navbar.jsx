@@ -65,7 +65,7 @@ export default function Navbar({ personalInfo: propPersonalInfo }) {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2 group">
-            <span className="font-poppins font-extrabold tracking-tight bg-gradient-to-r from-[#C6A75E] to-[#1F2A44] bg-clip-text text-transparent group-hover:opacity-80 transition-opacity text-xl">
+            <span className="font-poppins font-extrabold tracking-widest bg-gradient-to-r from-[#F5DFA0] via-[#C6A75E] to-[#F0C96A] bg-clip-text text-transparent group-hover:brightness-110 transition-all duration-300 text-xl drop-shadow-[0_0_8px_rgba(198,167,94,0.5)]">
               NITESH KUMAR
             </span>
 
@@ -144,7 +144,7 @@ export default function Navbar({ personalInfo: propPersonalInfo }) {
               <div>
                 {/* Header */}
                 <div className="flex items-center justify-between mb-8">
-                  <span className="font-poppins font-extrabold tracking-tight bg-gradient-to-r from-[#C6A75E] to-[#1F2A44] bg-clip-text text-transparent text-xl">
+                  <span className="font-poppins font-extrabold tracking-widest bg-gradient-to-r from-[#F5DFA0] via-[#C6A75E] to-[#F0C96A] bg-clip-text text-transparent text-xl">
                     NITESH KUMAR
                   </span>
                   <button

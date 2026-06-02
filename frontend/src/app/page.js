@@ -42,7 +42,7 @@ async function getPortfolioData() {
   try {
     const res = await fetchWithTimeout(`${apiBase}/api/portfolio`, {
       cache: 'no-store'
-    }, 800);
+    }, 8000);
     if (res.ok) {
       return await res.json();
     }
@@ -57,7 +57,7 @@ async function getProjectsData() {
   try {
     const res = await fetchWithTimeout(`${apiBase}/api/projects`, {
       cache: 'no-store'
-    }, 800);
+    }, 3000);
     if (res.ok) {
       return await res.json();
     }

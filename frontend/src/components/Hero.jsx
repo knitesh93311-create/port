@@ -187,7 +187,7 @@ export default function Hero({ personalInfo: propPersonalInfo }) {
                 <img 
                   src={imageSrc} 
                   alt={personalInfo.name || "Nitesh Kumar"} 
-                  className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-[1.01] filter drop-shadow-2xl z-10"
+                  className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-[1.01] filter drop-shadow-2xl z-10 relative -translate-y-6"
                   style={{
                     maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 97%)',
                     WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 97%)'

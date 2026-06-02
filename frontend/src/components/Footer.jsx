@@ -16,7 +16,7 @@ export default function Footer({ personalInfo: propPersonalInfo }) {
           {/* Column 1: Branding */}
           <div className="md:col-span-5 text-left flex flex-col items-start">
             <a href="#home" className="flex items-center gap-2 mb-4">
-              <span className="font-poppins font-extrabold text-xl tracking-widest bg-gradient-to-r from-[#F5DFA0] via-[#C6A75E] to-[#F0C96A] bg-clip-text text-transparent drop-shadow-[0_0_8px_rgba(198,167,94,0.5)]">
+              <span className="font-poppins font-extrabold text-xl tracking-tight bg-gradient-to-r from-[#C6A75E] to-[#1F2A44] bg-clip-text text-transparent">
                 NITESH KUMAR
               </span>
             </a>

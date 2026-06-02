@@ -13,7 +13,7 @@ const categoryLabels = {
 };
 
 const categoryColorGradients = {
-  frontend: "from-blue-500 to-indigo-500",
+  frontend: "from-[#C6A75E] to-[#1F2A44]",
   backend: "from-emerald-500 to-teal-500",
   database: "from-amber-500 to-orange-500",
   tools: "from-purple-500 to-pink-500"
@@ -33,10 +33,10 @@ export default function Skills({ skillsData: propSkillsData }) {
         
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="font-manrope text-xs font-bold uppercase tracking-[0.2em] text-[#2563EB] mb-2 block">
+          <span className="font-manrope text-xs font-bold uppercase tracking-[0.2em] text-[#C6A75E] mb-2 block">
             MY SKILLS
           </span>
-          <h2 className="font-poppins font-extrabold text-3xl sm:text-4xl text-[#0F172A] leading-tight mb-4">
+          <h2 className="font-poppins font-extrabold text-[#C6A75E]xl sm:text-4xl text-[#1F2A44] leading-tight mb-4">
             Modern Stack Specialization
           </h2>
           <p className="font-inter text-slate-500 text-sm sm:text-base leading-relaxed">
@@ -62,7 +62,7 @@ export default function Skills({ skillsData: propSkillsData }) {
                 {/* Category Header */}
                 <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
                   <span className={`w-3.5 h-3.5 rounded-full bg-gradient-to-r ${gradient}`} />
-                  <h3 className="font-poppins font-bold text-lg text-[#0F172A]">
+                  <h3 className="font-poppins font-bold text-lg text-[#1F2A44]">
                     {label}
                   </h3>
                 </div>
@@ -83,14 +83,14 @@ export default function Skills({ skillsData: propSkillsData }) {
                         {/* Title and Percentage */}
                         <div className="flex items-center justify-between mb-2">
                           <div className="flex items-center gap-3">
-                            <span className={`p-1.5 rounded-lg bg-slate-50 text-slate-600 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors duration-200`}>
+                            <span className={`p-1.5 rounded-lg bg-slate-50 text-slate-600 group-hover:bg-[#C6A75E]/10 group-hover:text-[#C6A75E] transition-colors duration-200`}>
                               <Icon size={18} />
                             </span>
-                            <span className="font-poppins text-sm font-bold text-slate-700 group-hover:text-[#0F172A] transition-colors duration-200">
+                            <span className="font-poppins text-sm font-bold text-slate-700 group-hover:text-[#1F2A44] transition-colors duration-200">
                               {skill.name}
                             </span>
                           </div>
-                          <span className="font-mono text-xs font-bold text-slate-400 group-hover:text-blue-600 transition-colors duration-200">
+                          <span className="font-mono text-xs font-bold text-slate-400 group-hover:text-[#C6A75E] transition-colors duration-200">
                             {skill.level}%
                           </span>
                         </div>

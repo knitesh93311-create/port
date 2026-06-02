@@ -18,10 +18,10 @@ export default function Experience({ experienceTimeline: propExperienceTimeline 
         
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="font-manrope text-xs font-bold uppercase tracking-[0.2em] text-[#2563EB] mb-2 block">
+          <span className="font-manrope text-xs font-bold uppercase tracking-[0.2em] text-[#C6A75E] mb-2 block">
             WORK HISTORY
           </span>
-          <h2 className="font-poppins font-extrabold text-3xl sm:text-4xl text-[#0F172A] leading-tight mb-4">
+          <h2 className="font-poppins font-extrabold text-[#C6A75E]xl sm:text-4xl text-[#1F2A44] leading-tight mb-4">
             Professional Timeline
           </h2>
           <p className="font-inter text-slate-500 text-sm sm:text-base leading-relaxed">
@@ -46,7 +46,7 @@ export default function Experience({ experienceTimeline: propExperienceTimeline 
               >
                 {/* Visual marker dot */}
                 <span className={`absolute top-1 -left-[45px] sm:-left-[61px] w-8 h-8 rounded-full border bg-white flex items-center justify-center shadow-sm z-10 transition-transform group-hover:scale-110 duration-200`}>
-                  <TimelineIcon size={12} className="text-slate-500 group-hover:text-[#2563EB] transition-colors" />
+                  <TimelineIcon size={12} className="text-slate-500 group-hover:text-[#C6A75E] transition-colors" />
                 </span>
 
                 {/* Alternating detail card style */}
@@ -54,7 +54,7 @@ export default function Experience({ experienceTimeline: propExperienceTimeline 
                   
                   {/* Tag and date header */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-                    <span className="font-manrope text-[10px] font-extrabold text-[#06B6D4] uppercase tracking-widest bg-cyan-50 border border-cyan-100 rounded-md px-2 py-0.5 w-max">
+                    <span className="font-manrope text-[10px] font-extrabold text-[#1F2A44] uppercase tracking-widest bg-cyan-50 border border-cyan-100 rounded-md px-2 py-0.5 w-max">
                       {item.type}
                     </span>
                     <span className="font-mono text-xs font-semibold text-slate-400">
@@ -63,10 +63,10 @@ export default function Experience({ experienceTimeline: propExperienceTimeline 
                   </div>
 
                   {/* Title & Organization */}
-                  <h3 className="font-poppins font-bold text-lg text-[#0F172A] mb-1">
+                  <h3 className="font-poppins font-bold text-lg text-[#1F2A44] mb-1">
                     {item.role}
                   </h3>
-                  <h4 className="font-manrope text-sm font-semibold text-[#2563EB] mb-4">
+                  <h4 className="font-manrope text-sm font-semibold text-[#C6A75E] mb-4">
                     {item.company}
                   </h4>
 

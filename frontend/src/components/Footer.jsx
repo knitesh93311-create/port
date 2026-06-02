@@ -7,7 +7,7 @@ import { personalInfo as staticPersonalInfo } from '@/data/portfolioData';
 export default function Footer({ personalInfo: propPersonalInfo }) {
   const personalInfo = propPersonalInfo || staticPersonalInfo;
   return (
-    <footer className="bg-[#0F172A] text-slate-400 border-t border-slate-800 py-12 md:py-16 overflow-hidden">
+    <footer className="bg-[#1F2A44] text-slate-400 border-t border-slate-800 py-12 md:py-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Top grid section */}
@@ -16,7 +16,7 @@ export default function Footer({ personalInfo: propPersonalInfo }) {
           {/* Column 1: Branding */}
           <div className="md:col-span-5 text-left flex flex-col items-start">
             <a href="#home" className="flex items-center gap-2 mb-4">
-              <span className="font-poppins font-extrabold text-2xl tracking-tight bg-gradient-to-r from-[#2563EB] to-[#06B6D4] bg-clip-text text-transparent">
+              <span className="font-poppins font-extrabold text-[#C6A75E]xl tracking-tight bg-gradient-to-r from-[#C6A75E] to-[#1F2A44] bg-clip-text text-transparent">
                 NK.
               </span>
               <span className="font-manrope text-[10px] font-bold text-white border border-slate-800 px-2 py-0.5 rounded-full bg-slate-900">
@@ -81,7 +81,7 @@ export default function Footer({ personalInfo: propPersonalInfo }) {
               target="_blank"
               rel="noopener noreferrer"
               download="Nitesh_Kumar_Resume.pdf"
-              className="inline-flex items-center gap-2 text-xs font-semibold text-white bg-[#2563EB] hover:bg[#1D4ED8] px-4 py-2 rounded-lg transition-colors"
+              className="inline-flex items-center gap-2 text-xs font-semibold text-white bg-[#C6A75E] hover:bg[#B0934E] px-4 py-2 rounded-lg transition-colors"
             >
               <FaDownload size={10} />
               Download Resume

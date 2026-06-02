@@ -14,15 +14,15 @@ const visualMockMap = {
   },
   2: {
     icon: FaShoppingBag,
-    gradient: "from-[#2563EB]/20 to-[#38BDF8]/20",
+    gradient: "from-[#C6A75E]/20 to-[#E8DCC8]/20",
     bgPattern: "radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 60%)",
-    accentColor: "border-[#2563EB]/30 text-[#2563EB] bg-[#2563EB]/5"
+    accentColor: "border-[#C6A75E]/30 text-[#C6A75E] bg-[#C6A75E]/5"
   },
   3: {
     icon: FaComments,
-    gradient: "from-[#06B6D4]/20 to-[#34D399]/20",
+    gradient: "from-[#1F2A44]/20 to-[#34D399]/20",
     bgPattern: "radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 60%)",
-    accentColor: "border-[#06B6D4]/30 text-[#06B6D4] bg-[#06B6D4]/5"
+    accentColor: "border-[#1F2A44]/30 text-[#1F2A44] bg-[#1F2A44]/5"
   },
   4: {
     icon: FaBriefcase,
@@ -52,10 +52,10 @@ export default function Projects({ projectsData: propProjectsData }) {
         
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="font-manrope text-xs font-bold uppercase tracking-[0.2em] text-[#2563EB] mb-2 block">
+          <span className="font-manrope text-xs font-bold uppercase tracking-[0.2em] text-[#C6A75E] mb-2 block">
             FEATURED PORTFOLIO
           </span>
-          <h2 className="font-poppins font-extrabold text-3xl sm:text-4xl text-[#0F172A] leading-tight mb-4">
+          <h2 className="font-poppins font-extrabold text-[#C6A75E]xl sm:text-4xl text-[#1F2A44] leading-tight mb-4">
             Enterprise MERN Applications
           </h2>
           <p className="font-inter text-slate-500 text-sm sm:text-base leading-relaxed">
@@ -68,9 +68,9 @@ export default function Projects({ projectsData: propProjectsData }) {
           {projects.map((project, index) => {
             const visual = visualMockMap[project.id] || {
               icon: FaProjectDiagram,
-              gradient: "from-blue-500/20 to-cyan-500/20",
+              gradient: "from-[#C6A75E]/20 to-cyan-500/20",
               bgPattern: "",
-              accentColor: "border-blue-500/30 text-blue-500 bg-blue-500/5"
+              accentColor: "border-[#C6A75E]/30 text-[#C6A75E] bg-[#C6A75E]/100/5"
             };
             const VisualIcon = visual.icon;
 
@@ -81,7 +81,7 @@ export default function Projects({ projectsData: propProjectsData }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group flex flex-col h-full bg-slate-50 border border-blue-200/70 rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-blue-400 hover:bg-white"
+                className="group flex flex-col h-full bg-slate-50 border border-[#C6A75E]/40 rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-[#C6A75E] hover:bg-white"
               >
                 {/* Visual Thumbnail representation */}
                 <div 
@@ -122,7 +122,7 @@ export default function Projects({ projectsData: propProjectsData }) {
                 <div className="p-6 flex-grow flex flex-col justify-between text-left">
                   <div>
                     {/* Project Title */}
-                    <h3 className="font-poppins font-bold text-lg text-[#0F172A] group-hover:text-[#2563EB] transition-colors duration-200 mb-3">
+                    <h3 className="font-poppins font-bold text-lg text-[#1F2A44] group-hover:text-[#C6A75E] transition-colors duration-200 mb-3">
                       {project.title}
                     </h3>
                     
@@ -160,7 +160,7 @@ export default function Projects({ projectsData: propProjectsData }) {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 inline-flex items-center justify-center gap-2 font-inter text-xs font-semibold text-white bg-[#2563EB] hover:bg-[#1D4ED8] rounded-lg py-2.5 transition-all active:scale-97 shadow-sm shadow-blue-500/5 hover:shadow-blue-500/15"
+                      className="flex-1 inline-flex items-center justify-center gap-2 font-inter text-xs font-semibold text-white bg-[#C6A75E] hover:bg-[#B0934E] rounded-lg py-2.5 transition-all active:scale-97 shadow-sm shadow-blue-500/5 hover:shadow-blue-500/15"
                     >
                       <FaExternalLinkAlt size={11} />
                       Live Demo

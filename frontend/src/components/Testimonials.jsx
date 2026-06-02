@@ -29,10 +29,10 @@ export default function Testimonials({ testimonialsData: propTestimonialsData })
         
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="font-manrope text-xs font-bold uppercase tracking-[0.2em] text-[#2563EB] mb-2 block">
+          <span className="font-manrope text-xs font-bold uppercase tracking-[0.2em] text-[#C6A75E] mb-2 block">
             TESTIMONIALS
           </span>
-          <h2 className="font-poppins font-extrabold text-3xl sm:text-4xl text-[#0F172A] leading-tight mb-4">
+          <h2 className="font-poppins font-extrabold text-[#C6A75E]xl sm:text-4xl text-[#1F2A44] leading-tight mb-4">
             LinkedIn & Client Reviews
           </h2>
           <p className="font-inter text-slate-500 text-sm sm:text-base leading-relaxed">
@@ -49,7 +49,7 @@ export default function Testimonials({ testimonialsData: propTestimonialsData })
           <div className="bg-slate-50 border border-slate-200/60 rounded-3xl p-8 sm:p-12 relative min-h-[300px] flex flex-col justify-between shadow-sm">
             
             {/* Quote Icon */}
-            <span className="absolute top-8 right-8 text-blue-600/10 pointer-events-none">
+            <span className="absolute top-8 right-8 text-[#C6A75E]/10 pointer-events-none">
               <FaQuoteLeft size={72} />
             </span>
 
@@ -82,7 +82,7 @@ export default function Testimonials({ testimonialsData: propTestimonialsData })
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 border-t border-slate-200/50 pt-6 mt-4 z-10">
               <div className="flex items-center gap-3 text-left">
                 {/* Visual Avatar */}
-                <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-400 p-0.5 shadow overflow-hidden flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#C6A75E] to-[#1F2A44] p-0.5 shadow overflow-hidden flex items-center justify-center">
                   {activeTestimonial.image ? (
                     <img 
                       src={activeTestimonial.image} 
@@ -90,13 +90,13 @@ export default function Testimonials({ testimonialsData: propTestimonialsData })
                       className="w-full h-full rounded-full object-cover"
                     />
                   ) : (
-                    <span className="w-full h-full bg-white rounded-full flex items-center justify-center text-[#2563EB] font-poppins font-bold text-xs uppercase">
+                    <span className="w-full h-full bg-white rounded-full flex items-center justify-center text-[#C6A75E] font-poppins font-bold text-xs uppercase">
                       {activeTestimonial.name.split(' ').map(n => n[0]).join('')}
                     </span>
                   )}
                 </div>
                 <div>
-                  <h4 className="font-poppins font-bold text-sm text-[#0F172A]">{activeTestimonial.name}</h4>
+                  <h4 className="font-poppins font-bold text-sm text-[#1F2A44]">{activeTestimonial.name}</h4>
                   <p className="font-manrope text-[11px] text-slate-400 font-semibold uppercase tracking-wider">{activeTestimonial.role}</p>
                 </div>
               </div>
@@ -105,14 +105,14 @@ export default function Testimonials({ testimonialsData: propTestimonialsData })
               <div className="flex items-center gap-2 self-end sm:self-center">
                 <button
                   onClick={handlePrev}
-                  className="p-3 bg-white border border-slate-200 rounded-xl text-slate-600 hover:text-[#2563EB] hover:border-slate-300 active:scale-95 transition-all shadow-sm"
+                  className="p-3 bg-white border border-slate-200 rounded-xl text-slate-600 hover:text-[#C6A75E] hover:border-slate-300 active:scale-95 transition-all shadow-sm"
                   aria-label="Previous Testimonial"
                 >
                   <FaChevronLeft size={12} />
                 </button>
                 <button
                   onClick={handleNext}
-                  className="p-3 bg-white border border-slate-200 rounded-xl text-slate-600 hover:text-[#2563EB] hover:border-slate-300 active:scale-95 transition-all shadow-sm"
+                  className="p-3 bg-white border border-slate-200 rounded-xl text-slate-600 hover:text-[#C6A75E] hover:border-slate-300 active:scale-95 transition-all shadow-sm"
                   aria-label="Next Testimonial"
                 >
                   <FaChevronRight size={12} />
@@ -129,7 +129,7 @@ export default function Testimonials({ testimonialsData: propTestimonialsData })
                 key={i}
                 onClick={() => setCurrentIndex(i)}
                 className={`h-2.5 rounded-full transition-all duration-300 ${
-                  currentIndex === i ? 'w-6 bg-[#2563EB]' : 'w-2.5 bg-slate-300 hover:bg-slate-400'
+                  currentIndex === i ? 'w-6 bg-[#C6A75E]' : 'w-2.5 bg-slate-300 hover:bg-slate-400'
                 }`}
                 aria-label={`Go to testimonial slide ${i + 1}`}
               />

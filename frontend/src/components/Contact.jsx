@@ -83,16 +83,16 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
     <section id="contact" className="py-24 bg-slate-50 relative overflow-hidden">
       
       {/* Background visual orb decoration */}
-      <div className="absolute bottom-[5%] right-[-5%] w-[400px] h-[400px] rounded-full bg-blue-50/70 blur-[110px] pointer-events-none" />
+      <div className="absolute bottom-[5%] right-[-5%] w-[400px] h-[400px] rounded-full bg-[#E8DCC8]/20 blur-[110px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="font-manrope text-xs font-bold uppercase tracking-[0.2em] text-[#2563EB] mb-2 block">
+          <span className="font-manrope text-xs font-bold uppercase tracking-[0.2em] text-[#C6A75E] mb-2 block">
             GET IN TOUCH
           </span>
-          <h2 className="font-poppins font-extrabold text-3xl sm:text-4xl text-[#0F172A] leading-tight mb-4">
+          <h2 className="font-poppins font-extrabold text-[#C6A75E]xl sm:text-4xl text-[#1F2A44] leading-tight mb-4">
             Connect With Me
           </h2>
           <p className="font-inter text-slate-500 text-sm sm:text-base leading-relaxed">
@@ -110,11 +110,11 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
               
               {/* Location Card */}
               <div className="bg-white border border-blue-900/30 p-6 rounded-2xl flex items-start gap-4 shadow-sm hover:shadow-md transition-all">
-                <span className="p-3 bg-blue-50 text-[#2563EB] border border-blue-100 rounded-xl">
+                <span className="p-3 bg-[#C6A75E]/10 text-[#C6A75E] border border-[#C6A75E]/20 rounded-xl">
                   <FaMapMarkerAlt size={18} />
                 </span>
                 <div>
-                  <h4 className="font-poppins font-bold text-[#0F172A] text-sm">Location</h4>
+                  <h4 className="font-poppins font-bold text-[#1F2A44] text-sm">Location</h4>
                   <p className="font-inter text-slate-500 text-xs sm:text-sm mt-1">{personalInfo.location}</p>
                 </div>
               </div>
@@ -124,11 +124,11 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
                 href={`mailto:${personalInfo.email}`}
                 className="bg-white border border-blue-900/30 p-6 rounded-2xl flex items-start gap-4 shadow-sm hover:shadow-md hover:border-blue-700/50 transition-all text-left"
               >
-                <span className="p-3 bg-cyan-50 text-[#06B6D4] border border-cyan-100 rounded-xl">
+                <span className="p-3 bg-cyan-50 text-[#1F2A44] border border-cyan-100 rounded-xl">
                   <FaEnvelope size={18} />
                 </span>
                 <div>
-                  <h4 className="font-poppins font-bold text-[#0F172A] text-sm">Email Address</h4>
+                  <h4 className="font-poppins font-bold text-[#1F2A44] text-sm">Email Address</h4>
                   <p className="font-inter text-slate-500 text-xs sm:text-sm mt-1 break-all">{personalInfo.email}</p>
                 </div>
               </a>
@@ -144,7 +144,7 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
                   <FaLinkedin size={18} />
                 </span>
                 <div>
-                  <h4 className="font-poppins font-bold text-[#0F172A] text-sm">LinkedIn Profile</h4>
+                  <h4 className="font-poppins font-bold text-[#1F2A44] text-sm">LinkedIn Profile</h4>
                   <p className="font-inter text-slate-500 text-xs sm:text-sm mt-1">linkedin.com/in/nitesh-kumar</p>
                 </div>
               </a>
@@ -160,7 +160,7 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
                   <FaGithub size={18} />
                 </span>
                 <div>
-                  <h4 className="font-poppins font-bold text-[#0F172A] text-sm">GitHub Profile</h4>
+                  <h4 className="font-poppins font-bold text-[#1F2A44] text-sm">GitHub Profile</h4>
                   <p className="font-inter text-slate-500 text-xs sm:text-sm mt-1">github.com/nitesh-kumar</p>
                 </div>
               </a>
@@ -168,7 +168,7 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
             </div>
 
             {/* Recruiter Quote visual node */}
-            <div className="bg-[#0F172A] text-white p-6 rounded-2xl border border-blue-800/40 text-left shadow-lg hidden lg:block">
+            <div className="bg-[#1F2A44] text-white p-6 rounded-2xl border border-blue-800/40 text-left shadow-lg hidden lg:block">
               <span className="relative flex h-2 w-2 mb-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
@@ -198,7 +198,7 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       {/* Name input */}
                       <div className="flex flex-col items-start">
-                        <label htmlFor="name" className="font-poppins text-xs font-bold text-[#0F172A] mb-1.5">
+                        <label htmlFor="name" className="font-poppins text-xs font-bold text-[#1F2A44] mb-1.5">
                           Your Name
                         </label>
                         <input
@@ -211,7 +211,7 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
                           className={`w-full font-inter text-sm px-4 py-3 rounded-xl border outline-none bg-slate-50 transition-all ${
                             touched.name && errors.name 
                               ? 'border-red-500 bg-red-50/20 text-red-900 focus:border-red-500' 
-                              : 'border-slate-200 focus:border-[#2563EB] focus:bg-white'
+                              : 'border-slate-200 focus:border-[#C6A75E] focus:bg-white'
                           }`}
                           placeholder="John Doe"
                           disabled={isSubmitting}
@@ -224,7 +224,7 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
 
                       {/* Email input */}
                       <div className="flex flex-col items-start">
-                        <label htmlFor="email" className="font-poppins text-xs font-bold text-[#0F172A] mb-1.5">
+                        <label htmlFor="email" className="font-poppins text-xs font-bold text-[#1F2A44] mb-1.5">
                           Email Address
                         </label>
                         <input
@@ -237,7 +237,7 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
                           className={`w-full font-inter text-sm px-4 py-3 rounded-xl border outline-none bg-slate-50 transition-all ${
                             touched.email && errors.email 
                               ? 'border-red-500 bg-red-50/20 text-red-900 focus:border-red-500' 
-                              : 'border-slate-200 focus:border-[#2563EB] focus:bg-white'
+                              : 'border-slate-200 focus:border-[#C6A75E] focus:bg-white'
                           }`}
                           placeholder="johndoe@company.com"
                           disabled={isSubmitting}
@@ -251,7 +251,7 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
 
                     {/* Subject Input */}
                     <div className="flex flex-col items-start">
-                      <label htmlFor="subject" className="font-poppins text-xs font-bold text-[#0F172A] mb-1.5">
+                      <label htmlFor="subject" className="font-poppins text-xs font-bold text-[#1F2A44] mb-1.5">
                         Subject
                       </label>
                       <input
@@ -264,7 +264,7 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
                         className={`w-full font-inter text-sm px-4 py-3 rounded-xl border outline-none bg-slate-50 transition-all ${
                           touched.subject && errors.subject 
                             ? 'border-red-500 bg-red-50/20 text-red-900 focus:border-red-500' 
-                            : 'border-slate-200 focus:border-[#2563EB] focus:bg-white'
+                            : 'border-slate-200 focus:border-[#C6A75E] focus:bg-white'
                         }`}
                         placeholder="Inquiry regarding Full-Stack Developer position"
                         disabled={isSubmitting}
@@ -277,7 +277,7 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
 
                     {/* Message Textarea */}
                     <div className="flex flex-col items-start flex-grow">
-                      <label htmlFor="message" className="font-poppins text-xs font-bold text-[#0F172A] mb-1.5">
+                      <label htmlFor="message" className="font-poppins text-xs font-bold text-[#1F2A44] mb-1.5">
                         Message
                       </label>
                       <textarea
@@ -290,7 +290,7 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
                         className={`w-full font-inter text-sm px-4 py-3 rounded-xl border outline-none bg-slate-50 transition-all resize-none flex-grow ${
                           touched.message && errors.message 
                             ? 'border-red-500 bg-red-50/20 text-red-900 focus:border-red-500' 
-                            : 'border-slate-200 focus:border-[#2563EB] focus:bg-white'
+                            : 'border-slate-200 focus:border-[#C6A75E] focus:bg-white'
                         }`}
                         placeholder="Hi Nitesh, we would love to schedule a technical screening call for next Tuesday..."
                         disabled={isSubmitting}
@@ -305,7 +305,7 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full inline-flex items-center justify-center gap-2 font-inter text-sm font-bold text-white bg-[#2563EB] hover:bg-[#1D4ED8] disabled:bg-blue-400 py-4 rounded-xl shadow-md transition-all active:scale-98 cursor-pointer"
+                      className="w-full inline-flex items-center justify-center gap-2 font-inter text-sm font-bold text-white bg-[#C6A75E] hover:bg-[#B0934E] disabled:bg-blue-400 py-4 rounded-xl shadow-md transition-all active:scale-98 cursor-pointer"
                     >
                       {isSubmitting ? (
                         <>
@@ -338,7 +338,7 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
                       <FaCheckCircle size={48} />
                     </motion.span>
                     
-                    <h3 className="font-poppins font-extrabold text-2xl text-[#0F172A] mb-3">
+                    <h3 className="font-poppins font-extrabold text-[#C6A75E]xl text-[#1F2A44] mb-3">
                       Message Sent Successfully!
                     </h3>
                     

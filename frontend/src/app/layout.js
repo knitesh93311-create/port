@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
       lang="en" 
       className="scroll-smooth"
     >
-      <body className="font-sans antialiased text-[#334155] bg-white selection:bg-[#06B6D4] selection:text-white">
+      <body className="font-sans antialiased text-[#334155] bg-white selection:bg-[#1F2A44] selection:text-white">
         {children}
       </body>
     </html>

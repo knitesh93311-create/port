@@ -18,7 +18,7 @@ export default function Experience({ experienceTimeline: propExperienceTimeline 
         
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="font-manrope text-xs font-bold uppercase tracking-[0.2em] text-[#C6A75E] mb-2 block">
+          <span className="font-manrope text-xs font-extrabold uppercase tracking-[0.2em] text-[#C6A75E] mb-2 block">
             WORK HISTORY
           </span>
           <h2 className="font-poppins font-extrabold text-[#C6A75E]xl sm:text-4xl text-[#1F2A44] leading-tight mb-4">
@@ -83,3 +83,4 @@ export default function Experience({ experienceTimeline: propExperienceTimeline 
     </section>
   );
 }
+

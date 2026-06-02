@@ -102,3 +102,4 @@ export default function Footer({ personalInfo: propPersonalInfo }) {
     </footer>
   );
 }
+

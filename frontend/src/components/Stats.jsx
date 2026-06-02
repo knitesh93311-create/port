@@ -89,3 +89,4 @@ export default function Stats({ aboutStats: propAboutStats }) {
     </section>
   );
 }
+

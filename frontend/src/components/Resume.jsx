@@ -163,3 +163,4 @@ export default function Resume({ personalInfo: propPersonalInfo }) {
     </section>
   );
 }
+

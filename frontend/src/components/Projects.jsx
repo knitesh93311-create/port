@@ -81,7 +81,7 @@ export default function Projects({ projectsData: propProjectsData }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group flex flex-col h-full bg-slate-50 border border-slate-200/50 rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-slate-300 hover:bg-white"
+                className="group flex flex-col h-full bg-slate-50 border border-blue-200/70 rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-blue-400 hover:bg-white"
               >
                 {/* Visual Thumbnail representation */}
                 <div 

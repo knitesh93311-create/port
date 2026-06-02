@@ -68,9 +68,7 @@ export default function Navbar({ personalInfo: propPersonalInfo }) {
             <span className="font-poppins font-extrabold tracking-tight bg-gradient-to-r from-[#C6A75E] to-[#1F2A44] bg-clip-text text-transparent group-hover:opacity-80 transition-opacity text-xl">
               NITESH KUMAR
             </span>
-            <span className="font-manrope text-xs font-semibold text-[#1F2A44] border border-slate-200 px-2 py-0.5 rounded-full bg-slate-50">
-              MERN
-            </span>
+
           </a>
 
           {/* Desktop Nav Links */}

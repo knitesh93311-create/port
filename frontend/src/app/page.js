@@ -1,6 +1,3 @@
-'use client';
-
-import { useState, useEffect } from 'react';
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
@@ -9,12 +6,10 @@ import Stats from "@/components/Stats";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
-import dynamic from 'next/dynamic';
+import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
-const Contact = dynamic(() => import('@/components/Contact'), { ssr: false });
-
-// Import the static data references to mutate them on client-side sync
+// Import the static data references as fallback/base
 import {
   personalInfo,
   aboutStats,
@@ -26,88 +21,87 @@ import {
 // Icon resolver: maps iconName strings from the backend to actual React icon components
 import { resolveItemIcon, resolveSkillsIcons } from '@/data/iconResolver';
 
-export default function Home() {
-  const [synced, setSynced] = useState(0);
-
-  useEffect(() => {
-    async function syncPortfolioData() {
-      try {
-        const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
-        const portRes = await fetch(`${apiBase}/api/portfolio`);
-        if (portRes.ok) {
-          const data = await portRes.json();
-          if (data) {
-            // 1. Sync Personal Info
-            if (data.personalInfo) {
-              Object.keys(personalInfo).forEach(key => delete personalInfo[key]);
-              Object.assign(personalInfo, data.personalInfo);
-            }
-            // 2. Sync About Stats
-            if (data.aboutStats && Array.isArray(data.aboutStats)) {
-              aboutStats.length = 0;
-              aboutStats.push(...data.aboutStats);
-            }
-            // 3. Sync Skills Data — resolve iconName strings to React components
-            if (data.skillsData) {
-              const resolvedSkills = resolveSkillsIcons(data.skillsData);
-              Object.keys(skillsData).forEach(key => delete skillsData[key]);
-              Object.assign(skillsData, resolvedSkills);
-            }
-            // 4. Sync Experience Timeline — resolve iconName strings to React components
-            if (data.experienceTimeline && Array.isArray(data.experienceTimeline)) {
-              experienceTimeline.length = 0;
-              experienceTimeline.push(...data.experienceTimeline.map(resolveItemIcon));
-            }
-          }
-        }
-      } catch (err) {
-        console.warn('Backend Portfolio sync failed, using default static data:', err);
-      }
-
-      try {
-        const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
-        const projRes = await fetch(`${apiBase}/api/projects`);
-        if (projRes.ok) {
-          const data = await projRes.json();
-          if (data && Array.isArray(data) && data.length > 0) {
-            const mapped = data.map((p, idx) => ({
-              id: idx + 1,
-              title: p.title,
-              description: p.description,
-              techStack: p.techStack || [],
-              githubUrl: p.githubUrl || '',
-              liveUrl: p.liveUrl || '',
-              thumbnail: p.thumbnail || '',
-            }));
-            projectsData.length = 0;
-            projectsData.push(...mapped);
-          }
-        }
-      } catch (err) {
-        console.warn('Backend Projects sync failed, using default static data:', err);
-      }
-
-      // Trigger a re-render so all children components consume updated values
-      setSynced(prev => prev + 1);
+async function getPortfolioData() {
+  const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+  try {
+    const res = await fetch(`${apiBase}/api/portfolio`, {
+      next: { revalidate: 60 } // Cache data for 60 seconds
+    });
+    if (res.ok) {
+      return await res.json();
     }
+  } catch (err) {
+    console.warn('Failed to fetch portfolio data on server, using static defaults:', err.message);
+  }
+  return null;
+}
 
-    syncPortfolioData();
-  }, []);
+async function getProjectsData() {
+  const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+  try {
+    const res = await fetch(`${apiBase}/api/projects`, {
+      next: { revalidate: 60 } // Cache projects for 60 seconds
+    });
+    if (res.ok) {
+      return await res.json();
+    }
+  } catch (err) {
+    console.warn('Failed to fetch projects data on server, using static defaults:', err.message);
+  }
+  return null;
+}
+
+export default async function Home() {
+  const portfolio = await getPortfolioData();
+  const rawProjects = await getProjectsData();
+
+  // 1. Merge Personal Info
+  const mergedPersonalInfo = portfolio?.personalInfo 
+    ? { ...personalInfo, ...portfolio.personalInfo } 
+    : personalInfo;
+
+  // 2. Merge About Stats
+  const mergedAboutStats = portfolio?.aboutStats && Array.isArray(portfolio.aboutStats)
+    ? portfolio.aboutStats
+    : aboutStats;
+
+  // 3. Merge Skills Data
+  const mergedSkillsData = portfolio?.skillsData 
+    ? resolveSkillsIcons(portfolio.skillsData) 
+    : skillsData;
+
+  // 4. Merge Experience Timeline
+  const mergedExperienceTimeline = portfolio?.experienceTimeline && Array.isArray(portfolio.experienceTimeline)
+    ? portfolio.experienceTimeline.map(resolveItemIcon)
+    : experienceTimeline;
+
+  // 5. Merge Projects Data
+  const mergedProjectsData = rawProjects && Array.isArray(rawProjects) && rawProjects.length > 0
+    ? rawProjects.map((p, idx) => ({
+        id: idx + 1,
+        title: p.title,
+        description: p.description,
+        techStack: p.techStack || [],
+        githubUrl: p.githubUrl || '',
+        liveUrl: p.liveUrl || '',
+        thumbnail: p.thumbnail || '',
+      }))
+    : projectsData;
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
+      <Navbar personalInfo={mergedPersonalInfo} />
       <main className="flex-grow">
-        <Hero />
+        <Hero personalInfo={mergedPersonalInfo} />
         <Marquee />
-        <About />
-        <Stats />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Contact />
+        <About personalInfo={mergedPersonalInfo} aboutStats={mergedAboutStats} />
+        <Stats aboutStats={mergedAboutStats} />
+        <Skills skillsData={mergedSkillsData} />
+        <Projects projectsData={mergedProjectsData} />
+        <Experience experienceTimeline={mergedExperienceTimeline} />
+        <Contact personalInfo={mergedPersonalInfo} />
       </main>
-      <Footer />
+      <Footer personalInfo={mergedPersonalInfo} />
     </div>
   );
 }

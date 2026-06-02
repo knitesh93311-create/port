@@ -6,7 +6,7 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaBriefcase, FaArrowRight
 import { 
   SiMongodb, SiExpress, SiReact, SiNodedotjs, SiTailwindcss, SiPostman 
 } from 'react-icons/si';
-import { personalInfo } from '@/data/portfolioData';
+import { personalInfo as staticPersonalInfo } from '@/data/portfolioData';
 
 const floatAnimation = (delay) => ({
   animate: {
@@ -21,7 +21,8 @@ const floatAnimation = (delay) => ({
   }
 });
 
-export default function Hero() {
+export default function Hero({ personalInfo: propPersonalInfo }) {
+  const personalInfo = propPersonalInfo || staticPersonalInfo;
   const [imageSrc, setImageSrc] = useState(personalInfo.heroImage || "/hero.jpg");
 
   useEffect(() => {

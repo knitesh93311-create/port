@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { aboutStats } from '@/data/portfolioData';
+import { aboutStats as staticAboutStats } from '@/data/portfolioData';
 import { FaProjectDiagram, FaCode, FaGithub, FaClock } from 'react-icons/fa';
 
 const iconMap = {
@@ -50,7 +50,8 @@ function StatCounter({ target, suffix = "+" }) {
   );
 }
 
-export default function Stats() {
+export default function Stats({ aboutStats: propAboutStats }) {
+  const aboutStats = propAboutStats || staticAboutStats;
   return (
     <section className="py-16 bg-white relative">
       <div className="max-w-7xl mx-auto px-6">

@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaDownload, FaMenu, FaTimes } from 'react-icons/fa';
 import { HiMenuAlt3 } from 'react-icons/hi';
 import { IoClose } from 'react-icons/io5';
-import usePortfolio from '@/hooks/usePortfolio';
+import { personalInfo as staticPersonalInfo } from '@/data/portfolioData';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -16,11 +16,11 @@ const navLinks = [
   { name: 'Contact', href: '#contact' },
 ];
 
-export default function Navbar() {
+export default function Navbar({ personalInfo: propPersonalInfo }) {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { portfolio } = usePortfolio();
+  const activePersonalInfo = propPersonalInfo || staticPersonalInfo;
 
   // Monitor scroll for header background opacity
   useEffect(() => {
@@ -101,7 +101,7 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center">
             <a
-              href={portfolio?.personalInfo?.resumeUrl}
+              href={activePersonalInfo?.resumeUrl || "/resume.pdf"}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-inter text-sm font-semibold text-white bg-[#2563EB] hover:bg-[#1D4ED8] active:scale-95 px-5 py-2.5 rounded-lg shadow-sm shadow-blue-500/10 hover:shadow-blue-500/20 transition-all duration-200"
@@ -183,7 +183,7 @@ export default function Navbar() {
               {/* Drawer CTA */}
               <div className="mt-8 border-t border-slate-100 pt-6">
                 <a
-                  href={portfolio?.personalInfo?.resumeUrl || '/resume.pdf'}
+                  href={activePersonalInfo?.resumeUrl || '/resume.pdf'}
                   target="_blank"
                   rel="noopener noreferrer"
                   download="Nitesh_Kumar_Resume.pdf"

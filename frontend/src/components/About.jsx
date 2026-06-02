@@ -3,9 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaCheckCircle, FaDownload, FaEnvelope, FaLaptopCode, FaDatabase, FaShieldAlt } from 'react-icons/fa';
-import { personalInfo } from '@/data/portfolioData';
+import { personalInfo as staticPersonalInfo } from '@/data/portfolioData';
 
-export default function About() {
+export default function About({ personalInfo: propPersonalInfo }) {
+  const personalInfo = propPersonalInfo || staticPersonalInfo;
   const [imageSrc, setImageSrc] = useState(personalInfo.aboutImage || "/about.jpg");
 
   useEffect(() => {

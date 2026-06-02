@@ -22,6 +22,22 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 // Serve Uploaded Files Statically
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({
+    status: 'OK',
+    message: 'Nitesh Kumar Portfolio API is live 🚀',
+    endpoints: {
+      health: '/health',
+      auth: '/api/auth',
+      portfolio: '/api/portfolio',
+      projects: '/api/projects',
+      contact: '/api/contact',
+      upload: '/api/upload',
+    }
+  });
+});
+
 // Simple check endpoint
 app.get('/health', (req, res) => {
   res.json({ status: 'OK', message: 'API Server is running successfully' });

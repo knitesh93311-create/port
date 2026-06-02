@@ -188,7 +188,7 @@ export default function Hero({ personalInfo: propPersonalInfo }) {
         </div>
 
         {/* Right Side: Visual Artwork */}
-        <div className="lg:col-span-5 relative flex justify-center items-center h-[450px] lg:h-[550px] mt-10 lg:mt-0">
+        <div className="lg:col-span-5 relative flex justify-center items-end h-[450px] lg:h-[550px] mt-10 lg:mt-0">
           
           <AnimatePresence mode="wait">
             {imageSrc ? (
@@ -198,21 +198,36 @@ export default function Hero({ personalInfo: propPersonalInfo }) {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.5 }}
-                className="w-full max-w-[420px] aspect-[4/5] relative group flex flex-col items-center justify-center pb-8"
+                className="w-full max-w-[440px] aspect-[4/5] relative group flex flex-col items-center justify-end overflow-visible"
               >
                 <img 
                   src={imageSrc} 
                   alt={personalInfo.name || "Nitesh Kumar"} 
-                  className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-102 filter drop-shadow-2xl z-10"
+                  className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-[1.01] filter drop-shadow-2xl z-10"
+                  style={{
+                    maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 97%)',
+                    WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 97%)'
+                  }}
                 />
                 
                 {/* Curved Cinematic Holographic Pedestal Line */}
                 <div 
-                  className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-[12px] rounded-[50%] border-t-2 border-[#06B6D4] shadow-[0_-3px_15px_rgba(6,182,212,0.8),0_0_8px_rgba(37,99,235,0.5)] pointer-events-none z-0"
-                  style={{
-                    background: "radial-gradient(ellipse at center, rgba(6,182,212,0.2) 0%, transparent 70%)"
-                  }}
-                />
+                  className="absolute bottom-[-8px] left-1/2 -translate-x-1/2 w-[85%] h-[16px] pointer-events-none z-20"
+                >
+                  {/* Outer glow flare */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#06B6D4]/30 to-transparent blur-[6px] rounded-[50%]" />
+                  
+                  {/* Core white/cyan glowing line */}
+                  <div 
+                    className="absolute inset-0 border-t-2 border-cyan-400 rounded-[50%]" 
+                    style={{
+                      boxShadow: '0 -2px 10px rgba(6, 182, 212, 0.6), inset 0 1px 4px rgba(255, 255, 255, 0.5)'
+                    }}
+                  />
+                  
+                  {/* Soft ambient ground reflection glow */}
+                  <div className="absolute -bottom-2 left-8 right-8 h-[6px] bg-gradient-to-r from-transparent via-[#06B6D4]/25 to-transparent blur-[4px] rounded-[50%]" />
+                </div>
               </motion.div>
             ) : (
               /* Main Visual Terminal Card — shown while image is loading */

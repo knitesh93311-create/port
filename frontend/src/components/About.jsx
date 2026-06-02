@@ -1,11 +1,23 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaCheckCircle, FaDownload, FaEnvelope, FaLaptopCode, FaDatabase, FaShieldAlt } from 'react-icons/fa';
 import { personalInfo } from '@/data/portfolioData';
 
 export default function About() {
+  const [imageSrc, setImageSrc] = useState(personalInfo.aboutImage || "/about.jpg");
+
+  useEffect(() => {
+    const nextImage = personalInfo.aboutImage || "/about.jpg";
+    if (nextImage && nextImage !== imageSrc) {
+      const img = new window.Image();
+      img.onload = () => {
+        setImageSrc(nextImage);
+      };
+      img.src = nextImage;
+    }
+  }, [personalInfo.aboutImage]);
   return (
     <section id="about" className="py-24 bg-white relative overflow-hidden">
       
@@ -28,10 +40,10 @@ export default function About() {
             
             {/* Main Interactive Portrait Art */}
             <div className="relative bg-gradient-to-b from-slate-50 to-slate-100 rounded-3xl border border-slate-200/80 shadow-md aspect-[4/5] flex flex-col justify-between overflow-hidden group">
-              {(personalInfo.aboutImage || "/about.jpg") ? (
+              {imageSrc ? (
                 <>
                   <img 
-                    src={personalInfo.aboutImage || "/about.jpg"} 
+                    src={imageSrc} 
                     alt={personalInfo.name || "Nitesh Kumar"} 
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />

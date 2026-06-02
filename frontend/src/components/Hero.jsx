@@ -22,7 +22,18 @@ const floatAnimation = (delay) => ({
 });
 
 export default function Hero() {
-  const currentHeroImage = personalInfo.heroImage || "/hero.jpg";
+  const [imageSrc, setImageSrc] = useState(personalInfo.heroImage || "/hero.jpg");
+
+  useEffect(() => {
+    const nextImage = personalInfo.heroImage || "/hero.jpg";
+    if (nextImage && nextImage !== imageSrc) {
+      const img = new window.Image();
+      img.onload = () => {
+        setImageSrc(nextImage);
+      };
+      img.src = nextImage;
+    }
+  }, [personalInfo.heroImage]);
 
   return (
     <section 
@@ -179,7 +190,7 @@ export default function Hero() {
         <div className="lg:col-span-5 relative flex justify-center items-center h-[450px] lg:h-[550px] mt-10 lg:mt-0">
           
           <AnimatePresence mode="wait">
-            {currentHeroImage ? (
+            {imageSrc ? (
               /* Main Visual Photo Card — only shown if image is available */
               <motion.div
                 key="hero-photo"
@@ -190,7 +201,7 @@ export default function Hero() {
                 className="w-full max-w-[420px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl relative group border border-slate-200/50"
               >
                 <img 
-                  src={currentHeroImage} 
+                  src={imageSrc} 
                   alt={personalInfo.name || "Nitesh Kumar"} 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />

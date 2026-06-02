@@ -109,7 +109,7 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
             <div className="flex flex-col gap-6 text-left">
               
               {/* Location Card */}
-              <div className="bg-white border border-slate-200/50 p-6 rounded-2xl flex items-start gap-4 shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-white border border-blue-900/30 p-6 rounded-2xl flex items-start gap-4 shadow-sm hover:shadow-md transition-all">
                 <span className="p-3 bg-blue-50 text-[#2563EB] border border-blue-100 rounded-xl">
                   <FaMapMarkerAlt size={18} />
                 </span>
@@ -122,7 +122,7 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
               {/* Email Card */}
               <a 
                 href={`mailto:${personalInfo.email}`}
-                className="bg-white border border-slate-200/50 p-6 rounded-2xl flex items-start gap-4 shadow-sm hover:shadow-md hover:border-slate-300 transition-all text-left"
+                className="bg-white border border-blue-900/30 p-6 rounded-2xl flex items-start gap-4 shadow-sm hover:shadow-md hover:border-blue-700/50 transition-all text-left"
               >
                 <span className="p-3 bg-cyan-50 text-[#06B6D4] border border-cyan-100 rounded-xl">
                   <FaEnvelope size={18} />
@@ -138,7 +138,7 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
                 href={personalInfo.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white border border-slate-200/50 p-6 rounded-2xl flex items-start gap-4 shadow-sm hover:shadow-md hover:border-slate-300 transition-all text-left"
+                className="bg-white border border-blue-900/30 p-6 rounded-2xl flex items-start gap-4 shadow-sm hover:shadow-md hover:border-blue-700/50 transition-all text-left"
               >
                 <span className="p-3 bg-indigo-50 text-[#0077B5] border border-indigo-100 rounded-xl">
                   <FaLinkedin size={18} />
@@ -154,7 +154,7 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
                 href={personalInfo.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white border border-slate-200/50 p-6 rounded-2xl flex items-start gap-4 shadow-sm hover:shadow-md hover:border-slate-300 transition-all text-left"
+                className="bg-white border border-blue-900/30 p-6 rounded-2xl flex items-start gap-4 shadow-sm hover:shadow-md hover:border-blue-700/50 transition-all text-left"
               >
                 <span className="p-3 bg-gray-50 text-[#181717] border border-gray-100 rounded-xl">
                   <FaGithub size={18} />
@@ -168,7 +168,7 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
             </div>
 
             {/* Recruiter Quote visual node */}
-            <div className="bg-[#0F172A] text-white p-6 rounded-2xl border border-slate-800 text-left shadow-lg hidden lg:block">
+            <div className="bg-[#0F172A] text-white p-6 rounded-2xl border border-blue-800/40 text-left shadow-lg hidden lg:block">
               <span className="relative flex h-2 w-2 mb-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
@@ -183,7 +183,7 @@ export default function Contact({ personalInfo: propPersonalInfo }) {
 
           {/* Right Column: Contact Form */}
           <div className="lg:col-span-7">
-            <div className="bg-white border border-slate-200/60 rounded-3xl p-6 sm:p-8 shadow-sm relative h-full">
+            <div className="bg-white border border-blue-900/30 rounded-3xl p-6 sm:p-8 shadow-sm relative h-full">
               
               <AnimatePresence mode="wait">
                 {submitStatus !== 'success' ? (

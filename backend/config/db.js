@@ -1,31 +1,25 @@
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
-  const primaryURI = process.env.MONGODB_URI;
-  const fallbackURI = 'mongodb://localhost:27017/portfolioDB';
+  const uri = process.env.MONGODB_URI;
+
+  if (!uri) {
+    console.error('FATAL: MONGODB_URI environment variable is not set.');
+    process.exit(1);
+  }
 
   try {
-    console.log('Attempting connection to primary MongoDB...');
-    const conn = await mongoose.connect(primaryURI, {
-      serverSelectionTimeoutMS: 5000 // 5 seconds timeout
+    console.log('Connecting to MongoDB...');
+    const conn = await mongoose.connect(uri, {
+      serverSelectionTimeoutMS: 10000, // 10 seconds
     });
-    console.log(`MongoDB Connected (Primary): ${conn.connection.host}`);
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
-    console.error(`MongoDB Primary Connection Error: ${error.message}`);
-    if (primaryURI !== fallbackURI) {
-      try {
-        console.log(`Attempting fallback connection to local MongoDB (${fallbackURI})...`);
-        const conn = await mongoose.connect(fallbackURI, {
-          serverSelectionTimeoutMS: 5000
-        });
-        console.log(`MongoDB Connected (Fallback/Local): ${conn.connection.host}`);
-      } catch (fallbackError) {
-        console.error(`MongoDB Fallback Connection Error: ${fallbackError.message}`);
-        process.exit(1);
-      }
-    } else {
-      process.exit(1);
-    }
+    console.error(`MongoDB Connection Failed: ${error.message}`);
+    console.error(
+      'Hint: Make sure your MongoDB Atlas cluster allows connections from 0.0.0.0/0 (all IPs).'
+    );
+    process.exit(1);
   }
 };
 

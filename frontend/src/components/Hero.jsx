@@ -25,28 +25,31 @@ export default function Hero() {
   const [imageReady, setImageReady] = useState(false);
   const [imageSrc, setImageSrc] = useState('');
 
-  // Preload the hero image in memory — only show it once fully downloaded
+  // Preload the hero image — use localStorage cache for instant repeat visits
   useEffect(() => {
-    const src = personalInfo.heroImage;
-    if (!src) {
-      setImageReady(false);
-      setImageSrc('');
-      return;
-    }
-    // Already showing this image
-    if (src === imageSrc && imageReady) return;
+    const preload = (url) => {
+      if (!url) return;
+      const img = new window.Image();
+      img.onload = () => {
+        setImageSrc(url);
+        setImageReady(true);
+        try { localStorage.setItem('hero_image_cache', url); } catch (_) {}
+      };
+      img.onerror = () => {};
+      img.src = url;
+    };
 
-    setImageReady(false);
-    const img = new Image();
-    img.onload = () => {
-      setImageSrc(src);
-      setImageReady(true);
-    };
-    img.onerror = () => {
-      setImageReady(false);
-      setImageSrc('');
-    };
-    img.src = src;
+    // 1. Try cached image first (instant on repeat visits)
+    try {
+      const cached = localStorage.getItem('hero_image_cache');
+      if (cached) preload(cached);
+    } catch (_) {}
+
+    // 2. Also try the live source (will override cache if different)
+    const src = personalInfo.heroImage;
+    if (src && src !== imageSrc) {
+      preload(src);
+    }
   });
 
   return (

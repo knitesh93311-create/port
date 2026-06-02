@@ -39,32 +39,16 @@ export default function Hero({ personalInfo: propPersonalInfo }) {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen pt-32 pb-20 px-6 overflow-hidden flex items-center radial-bg"
+      className="relative min-h-screen pt-24 lg:pt-28 pb-16 px-6 overflow-hidden flex items-start radial-bg"
     >
       {/* Background Orbs */}
       <div className="absolute top-[20%] right-[10%] w-[400px] h-[400px] rounded-full bg-blue-400/10 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[10%] left-[5%] w-[350px] h-[350px] rounded-full bg-cyan-400/10 blur-[100px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center z-10">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center z-10 mt-6 lg:mt-10">
         
         {/* Left Side: Content */}
         <div className="lg:col-span-7 flex flex-col items-start text-left">
-          
-          {/* Availability Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200/60 rounded-full px-4 py-1.5 mb-6 shadow-sm"
-          >
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-            </span>
-            <span className="font-manrope text-xs font-semibold text-emerald-800 tracking-wide">
-              {personalInfo.availability || "Available For Full-Time Opportunities"}
-            </span>
-          </motion.div>
 
           {/* Small Label */}
           <motion.span

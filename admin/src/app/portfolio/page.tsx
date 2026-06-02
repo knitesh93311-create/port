@@ -86,7 +86,8 @@ export default function PortfolioPage() {
     triggerImageCrop(file, async (croppedBlob) => {
       setUploadingHeroImage(true);
       try {
-        const croppedFile = new File([croppedBlob], file.name || 'hero.jpg', { type: 'image/jpeg' });
+        const ext = croppedBlob.type === 'image/png' ? 'png' : croppedBlob.type === 'image/webp' ? 'webp' : 'jpg';
+        const croppedFile = new File([croppedBlob], file.name || `hero.${ext}`, { type: croppedBlob.type });
         const res = await uploadFile(croppedFile);
         setPersonalInfo(prev => {
           const updated = { ...prev, heroImage: res.url };
@@ -111,7 +112,8 @@ export default function PortfolioPage() {
     triggerImageCrop(file, async (croppedBlob) => {
       setUploadingAboutImage(true);
       try {
-        const croppedFile = new File([croppedBlob], file.name || 'about.jpg', { type: 'image/jpeg' });
+        const ext = croppedBlob.type === 'image/png' ? 'png' : croppedBlob.type === 'image/webp' ? 'webp' : 'jpg';
+        const croppedFile = new File([croppedBlob], file.name || `about.${ext}`, { type: croppedBlob.type });
         const res = await uploadFile(croppedFile);
         setPersonalInfo(prev => {
           const updated = { ...prev, aboutImage: res.url };

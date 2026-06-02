@@ -110,14 +110,32 @@ export default function ImageCropperModal({ imageSrc, onCrop, onClose }: ImageCr
       cropH
     );
 
+    // Detect format to preserve transparency (PNG, WebP, GIF)
+    let mimeType = 'image/jpeg';
+    if (imageSrc.startsWith('data:')) {
+      const match = imageSrc.match(/^data:([^;]+);/);
+      if (match) {
+        mimeType = match[1];
+      }
+    } else {
+      const ext = imageSrc.split('?')[0].split('.').pop()?.toLowerCase();
+      if (ext === 'png') {
+        mimeType = 'image/png';
+      } else if (ext === 'webp') {
+        mimeType = 'image/webp';
+      } else if (ext === 'gif') {
+        mimeType = 'image/gif';
+      }
+    }
+
     canvas.toBlob(
       (blob) => {
         if (blob) {
           onCrop(blob);
         }
       },
-      'image/jpeg',
-      0.95
+      mimeType,
+      mimeType === 'image/jpeg' ? 0.95 : undefined
     );
   };
 

@@ -94,7 +94,8 @@ export default function ProjectsPage() {
       setCropCallback(() => async (croppedBlob: Blob) => {
         setUploading(true);
         try {
-          const croppedFile = new File([croppedBlob], file.name || 'project.jpg', { type: 'image/jpeg' });
+          const ext = croppedBlob.type === 'image/png' ? 'png' : croppedBlob.type === 'image/webp' ? 'webp' : 'jpg';
+          const croppedFile = new File([croppedBlob], file.name || `project.${ext}`, { type: croppedBlob.type });
           const res = await uploadFile(croppedFile);
           setThumbnail(res.url);
           setCropperOpen(false);

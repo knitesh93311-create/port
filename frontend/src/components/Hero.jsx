@@ -1,7 +1,7 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaBriefcase, FaArrowRight } from 'react-icons/fa';
 import { 
   SiMongodb, SiExpress, SiReact, SiNodedotjs, SiTailwindcss, SiPostman 
@@ -22,6 +22,33 @@ const floatAnimation = (delay) => ({
 });
 
 export default function Hero() {
+  const [imageReady, setImageReady] = useState(false);
+  const [imageSrc, setImageSrc] = useState('');
+
+  // Preload the hero image in memory — only show it once fully downloaded
+  useEffect(() => {
+    const src = personalInfo.heroImage;
+    if (!src) {
+      setImageReady(false);
+      setImageSrc('');
+      return;
+    }
+    // Already showing this image
+    if (src === imageSrc && imageReady) return;
+
+    setImageReady(false);
+    const img = new Image();
+    img.onload = () => {
+      setImageSrc(src);
+      setImageReady(true);
+    };
+    img.onerror = () => {
+      setImageReady(false);
+      setImageSrc('');
+    };
+    img.src = src;
+  });
+
   return (
     <section 
       id="home" 
@@ -176,66 +203,70 @@ export default function Hero() {
         {/* Right Side: Visual Artwork */}
         <div className="lg:col-span-5 relative flex justify-center items-center h-[450px] lg:h-[550px] mt-10 lg:mt-0">
           
-          {personalInfo.heroImage ? (
-            /* Main Visual Photo Card */
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="w-full max-w-[420px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl relative group border border-slate-200/50 bg-slate-100"
-            >
-              <img 
-                src={personalInfo.heroImage} 
-                alt={personalInfo.name || "Nitesh Kumar"} 
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-            </motion.div>
-          ) : (
-            /* Main Visual Terminal Card */
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="w-full max-w-[420px] aspect-[4/5] glass-card-dark rounded-3xl p-6 shadow-2xl relative overflow-hidden flex flex-col justify-between"
-            >
-              {/* Terminal Top Window Dots */}
-              <div className="flex items-center gap-2 mb-6 border-b border-slate-800 pb-4">
-                <span className="w-3.5 h-3.5 rounded-full bg-[#EF4444]" />
-                <span className="w-3.5 h-3.5 rounded-full bg-[#F59E0B]" />
-                <span className="w-3.5 h-3.5 rounded-full bg-[#10B981]" />
-                <span className="ml-4 font-mono text-xs text-slate-500">nitesh-developer.js</span>
-              </div>
+          <AnimatePresence mode="wait">
+            {imageReady && imageSrc ? (
+              /* Main Visual Photo Card — only shown after image is fully loaded */
+              <motion.div
+                key="hero-photo"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.5 }}
+                className="w-full max-w-[420px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl relative group border border-slate-200/50"
+              >
+                <img 
+                  src={imageSrc} 
+                  alt={personalInfo.name || "Nitesh Kumar"} 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+              </motion.div>
+            ) : (
+              /* Main Visual Terminal Card — shown while image is loading */
+              <motion.div
+                key="hero-terminal"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.5 }}
+                className="w-full max-w-[420px] aspect-[4/5] glass-card-dark rounded-3xl p-6 shadow-2xl relative overflow-hidden flex flex-col justify-between"
+              >
+                {/* Terminal Top Window Dots */}
+                <div className="flex items-center gap-2 mb-6 border-b border-slate-800 pb-4">
+                  <span className="w-3.5 h-3.5 rounded-full bg-[#EF4444]" />
+                  <span className="w-3.5 h-3.5 rounded-full bg-[#F59E0B]" />
+                  <span className="w-3.5 h-3.5 rounded-full bg-[#10B981]" />
+                  <span className="ml-4 font-mono text-xs text-slate-500">nitesh-developer.js</span>
+                </div>
 
-              {/* Simulated Code Snip */}
-              <div className="font-mono text-xs text-slate-300 leading-relaxed flex-grow text-left">
-                <p className="text-slate-500">// Initialize MERN Project</p>
-                <p><span className="text-[#F43F5E]">const</span> developer = &#123;</p>
-                <p className="pl-4">name: <span className="text-[#38BDF8]">&apos;Nitesh Kumar&apos;</span>,</p>
-                <p className="pl-4">role: <span className="text-[#38BDF8]">&apos;Full Stack Engineer&apos;</span>,</p>
-                <p className="pl-4">coreStack: [<span className="text-[#34D399]">&apos;MongoDB&apos;, &apos;Express&apos;, &apos;React&apos;, &apos;Node&apos;</span>],</p>
-                <p className="pl-4">mission: <span className="text-[#FBBF24]">&apos;Build Clean & Scalable Products&apos;</span>,</p>
-                <p className="pl-4">availability: <span className="text-[#34D399]">true</span></p>
-                <p>&#125;;</p>
-                <br />
-                <p className="text-slate-500">// Express Route</p>
-                <p>app.get(<span className="text-[#38BDF8]">&apos;/api/value-created&apos;</span>, (req, res) =&gt; &#123;</p>
-                <p className="pl-4 text-[#F43F5E]">return <span className="text-white">res.status(200).json(&#123;</span></p>
-                <p className="pl-8">impact: <span className="text-[#38BDF8]">&apos;High-Performance SaaS Architectures&apos;</span>,</p>
-                <p className="pl-8">recruiterStatus: <span className="text-[#38BDF8]">&apos;Ready to hire&apos;</span></p>
-                <p className="pl-4 text-white">&#125;);</p>
-                <p>&#125;);</p>
-              </div>
+                {/* Simulated Code Snip */}
+                <div className="font-mono text-xs text-slate-300 leading-relaxed flex-grow text-left">
+                  <p className="text-slate-500">// Initialize MERN Project</p>
+                  <p><span className="text-[#F43F5E]">const</span> developer = &#123;</p>
+                  <p className="pl-4">name: <span className="text-[#38BDF8]">&apos;Nitesh Kumar&apos;</span>,</p>
+                  <p className="pl-4">role: <span className="text-[#38BDF8]">&apos;Full Stack Engineer&apos;</span>,</p>
+                  <p className="pl-4">coreStack: [<span className="text-[#34D399]">&apos;MongoDB&apos;, &apos;Express&apos;, &apos;React&apos;, &apos;Node&apos;</span>],</p>
+                  <p className="pl-4">mission: <span className="text-[#FBBF24]">&apos;Build Clean & Scalable Products&apos;</span>,</p>
+                  <p className="pl-4">availability: <span className="text-[#34D399]">true</span></p>
+                  <p>&#125;;</p>
+                  <br />
+                  <p className="text-slate-500">// Express Route</p>
+                  <p>app.get(<span className="text-[#38BDF8]">&apos;/api/value-created&apos;</span>, (req, res) =&gt; &#123;</p>
+                  <p className="pl-4 text-[#F43F5E]">return <span className="text-white">res.status(200).json(&#123;</span></p>
+                  <p className="pl-8">impact: <span className="text-[#38BDF8]">&apos;High-Performance SaaS Architectures&apos;</span>,</p>
+                  <p className="pl-8">recruiterStatus: <span className="text-[#38BDF8]">&apos;Ready to hire&apos;</span></p>
+                  <p className="pl-4 text-white">&#125;);</p>
+                  <p>&#125;);</p>
+                </div>
 
-              {/* Simulated Git Output Status */}
-              <div className="bg-[#0F172A] rounded-xl p-3 border border-slate-800 text-left">
-                <span className="text-[#06B6D4] text-xs font-mono">$ git commit -m &quot;Ready for production&quot;</span>
-                <p className="text-emerald-400 text-xs font-mono mt-1">✓ Build success. Ready for enterprise launch.</p>
-              </div>
-            </motion.div>
-          )}
-
-
+                {/* Simulated Git Output Status */}
+                <div className="bg-[#0F172A] rounded-xl p-3 border border-slate-800 text-left">
+                  <span className="text-[#06B6D4] text-xs font-mono">$ git commit -m &quot;Ready for production&quot;</span>
+                  <p className="text-emerald-400 text-xs font-mono mt-1">✓ Build success. Ready for enterprise launch.</p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
         </div>
       </div>

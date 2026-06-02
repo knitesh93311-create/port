@@ -2,13 +2,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #C6A75E; /* Soft Gold */
-  --color-primary-hover: #B0934E; /* Darker Gold */
-  --color-secondary: #1F2A44; /* Navy */
-  --color-accent: #E8DCC8; /* Warm Beige */
-  --color-background: #FAF8F5; /* Premium luxury cream background */
+  --color-primary: #C6A75E;        /* Warm Gold */
+  --color-primary-hover: #B0934E;  /* Deep Gold */
+  --color-primary-light: #D4B96A;  /* Light Gold */
+  --color-secondary: #1F2A44;      /* Premium Navy */
+  --color-secondary-light: #2D3E62;/* Lighter Navy */
+  --color-accent: #E8DCC8;         /* Warm Beige */
+  --color-background: #FAF8F5;     /* Luxury Cream */
   --color-surface: #ffffff;
-  --color-text: #3A4760; /* Darker navy/charcoal for premium readability */
+  --color-text: #3A4760;           /* Navy Charcoal */
+  --color-text-muted: #64748B;     /* Muted slate */
 
   --font-sans: 'Inter', 'Poppins', sans-serif;
   --font-inter: 'Inter', sans-serif;
@@ -16,48 +19,102 @@
   --font-manrope: 'Manrope', sans-serif;
 }
 
-/* Custom Base Configurations */
+/* ─── Base ─────────────────────────────────────────────────────────── */
 body {
   background-color: var(--color-background);
   color: var(--color-text);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Utilities */
+/* ─── Nav Glass ─────────────────────────────────────────────────────── */
 @utility glass-nav {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(250, 248, 245, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(198, 167, 94, 0.15);
+  box-shadow: 0 1px 20px rgba(31, 42, 68, 0.06);
+}
+
+/* ─── Cards ─────────────────────────────────────────────────────────── */
+@utility glass-card {
+  background-color: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.5);
-}
-
-@utility glass-card {
-  background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+  border: 1px solid rgba(198, 167, 94, 0.18);
+  box-shadow: 0 4px 24px rgba(31, 42, 68, 0.06);
 }
 
 @utility glass-card-dark {
-  background-color: rgba(15, 23, 42, 0.95);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background-color: rgba(15, 23, 42, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(51, 65, 85, 0.5);
 }
 
-@utility radial-bg {
-  background-image: radial-gradient(circle at 1px 1px, rgba(37, 99, 235, 0.05) 1px, transparent 0);
-  background-size: 24px 24px;
+/* Luxury dark-navy card with gold border highlight */
+@utility luxury-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(31, 42, 68, 0.12);
+  border-radius: 20px;
+  box-shadow:
+    0 2px 8px rgba(31, 42, 68, 0.05),
+    0 0 0 0 transparent;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* Custom Animations & Marquee */
+@utility luxury-card:hover {
+  border-color: rgba(198, 167, 94, 0.35);
+  box-shadow:
+    0 8px 32px rgba(31, 42, 68, 0.1),
+    0 0 0 1px rgba(198, 167, 94, 0.15);
+}
+
+/* ─── Background Patterns ─────────────────────────────────────────── */
+@utility radial-bg {
+  background-image: radial-gradient(circle at 1px 1px, rgba(198, 167, 94, 0.07) 1px, transparent 0);
+  background-size: 28px 28px;
+}
+
+/* ─── Section Headers ─────────────────────────────────────────────── */
+@utility section-label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: #C6A75E;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* ─── Gold Glow Effects ───────────────────────────────────────────── */
+@utility gold-glow {
+  box-shadow: 0 0 20px rgba(198, 167, 94, 0.3), 0 0 60px rgba(198, 167, 94, 0.1);
+}
+
+@utility gold-text-glow {
+  text-shadow: 0 0 30px rgba(198, 167, 94, 0.4);
+}
+
+/* ─── Skill / Highlight Boxes ─────────────────────────────────────── */
+@utility highlight-box {
+  border: 1.5px solid rgba(31, 42, 68, 0.14);
+  border-radius: 16px;
+  background: #ffffff;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+@utility highlight-box:hover {
+  border-color: rgba(198, 167, 94, 0.4);
+  box-shadow: 0 4px 20px rgba(198, 167, 94, 0.1);
+}
+
+/* ─── Animations ──────────────────────────────────────────────────── */
 @keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 @utility animate-marquee {
@@ -66,7 +123,49 @@ body {
   animation: marquee 35s linear infinite;
 }
 
-/* Custom scrollbars */
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@utility animate-float {
+  animation: float-gentle 4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@utility gold-shimmer {
+  background: linear-gradient(90deg, #C6A75E 0%, #E8DCC8 40%, #C6A75E 60%, #B0934E 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ─── Gold Pedestal Line ──────────────────────────────────────────── */
+@utility pedestal-line {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(198, 167, 94, 0.25) 10%,
+    rgba(198, 167, 94, 0.85) 35%,
+    rgba(212, 185, 106, 1) 50%,
+    rgba(198, 167, 94, 0.85) 65%,
+    rgba(198, 167, 94, 0.25) 90%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 16px 3px rgba(198, 167, 94, 0.3),
+    0 0 48px 10px rgba(198, 167, 94, 0.1);
+  border-radius: 50%;
+}
+
+/* ─── Scrollbars ──────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -75,11 +174,11 @@ body {
   background: #FAF8F5;
 }
 ::-webkit-scrollbar-thumb {
-  background: #E8DCC8;
+  background: linear-gradient(180deg, #E8DCC8, #C6A75E);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C6A75E;
+  background: #B0934E;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -88,4 +187,10 @@ body {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* ─── Selection ───────────────────────────────────────────────────── */
+::selection {
+  background-color: rgba(198, 167, 94, 0.25);
+  color: #1F2A44;
 }

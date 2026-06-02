@@ -59,16 +59,17 @@ export default function Navbar({ personalInfo: propPersonalInfo }) {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'glass-nav py-4 shadow-sm' : 'bg-transparent py-6'
+          scrolled ? 'glass-nav py-4 shadow-sm' : 'py-6'
         }`}
+        style={!scrolled ? { background: 'transparent' } : {}}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2 group">
-            <span className="font-poppins font-extrabold text-[#C6A75E]xl tracking-tight bg-gradient-to-r from-[#C6A75E] to-[#1F2A44] bg-clip-text text-transparent group-hover:opacity-80 transition-opacity">
+          <a href="#home" className="flex items-center gap-2.5 group">
+            <span className="font-poppins font-black text-2xl tracking-tight bg-gradient-to-r from-[#C6A75E] via-[#D4B96A] to-[#1F2A44] bg-clip-text text-transparent group-hover:opacity-85 transition-opacity">
               NK.
             </span>
-            <span className="font-manrope text-xs font-semibold text-[#1F2A44] border border-slate-200 px-2 py-0.5 rounded-full bg-slate-50">
+            <span className="font-manrope text-[10px] font-bold text-[#1F2A44] border border-[#1F2A44]/15 px-2.5 py-1 rounded-full bg-[#1F2A44]/5 tracking-wider uppercase">
               MERN
             </span>
           </a>
@@ -89,7 +90,8 @@ export default function Navbar({ personalInfo: propPersonalInfo }) {
                   {isActive && (
                     <motion.span
                       layoutId="activeIndicator"
-                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#C6A75E] rounded-full"
+                      className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full"
+                      style={{ background: 'linear-gradient(90deg, #C6A75E, #B0934E)' }}
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}

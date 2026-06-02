@@ -22,8 +22,9 @@ export default function About({ personalInfo: propPersonalInfo }) {
   return (
     <section id="about" className="py-24 bg-white relative overflow-hidden">
       
-      {/* Background visual element */}
-      <div className="absolute top-[10%] left-[-5%] w-[300px] h-[300px] rounded-full bg-[#C6A75E]/5 blur-[80px] pointer-events-none" />
+      {/* Background luxury elements */}
+      <div className="absolute top-[10%] left-[-5%] w-[400px] h-[400px] rounded-full bg-[#C6A75E]/6 blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-[5%] right-[-5%] w-[350px] h-[350px] rounded-full bg-[#1F2A44]/4 blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -37,10 +38,13 @@ export default function About({ personalInfo: propPersonalInfo }) {
             className="lg:col-span-5 relative"
           >
             {/* Visual Frame Decor */}
-            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-[#C6A75E]/10 to-[#1F2A44]/10 blur-xl opacity-80 pointer-events-none" />
+            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-[#C6A75E]/10 to-[#1F2A44]/8 blur-xl opacity-80 pointer-events-none" />
             
             {/* Main Interactive Portrait Art */}
-            <div className="relative bg-gradient-to-b from-slate-50 to-slate-100 rounded-3xl border border-slate-200/80 shadow-md aspect-[4/5] flex flex-col justify-between overflow-hidden group">
+            <div
+              className="relative bg-gradient-to-b from-slate-50 to-slate-100 rounded-3xl aspect-[4/5] flex flex-col justify-between overflow-hidden group transition-all duration-300"
+              style={{ border: '1.5px solid rgba(31, 42, 68, 0.12)', boxShadow: '0 4px 24px rgba(31, 42, 68, 0.07)' }}
+            >
               {imageSrc ? (
                 <>
                   <img 
@@ -133,12 +137,13 @@ export default function About({ personalInfo: propPersonalInfo }) {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <span className="font-manrope text-xs font-bold uppercase tracking-[0.2em] text-[#C6A75E] mb-2 block">
+              <span className="font-manrope text-xs font-bold uppercase tracking-[0.22em] text-[#C6A75E] mb-2 block">
                 ABOUT ME
               </span>
-              <h2 className="font-poppins font-extrabold text-[#C6A75E]xl sm:text-4xl text-[#1F2A44] leading-tight mb-6">
+              <h2 className="font-poppins font-extrabold text-3xl sm:text-4xl text-[#1F2A44] leading-tight mb-4">
                 Passionate MERN Stack Developer Focused On Building Real-World Solutions
               </h2>
+              <div className="w-14 h-[2px] bg-gradient-to-r from-[#C6A75E] to-[#B0934E] rounded-full mb-6" />
             </motion.div>
 
             <motion.p
@@ -159,29 +164,30 @@ export default function About({ personalInfo: propPersonalInfo }) {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8"
             >
-              <div className="flex gap-3 items-start">
-                <span className="p-2 bg-[#C6A75E]/10 rounded-lg text-[#C6A75E] mt-0.5"><FaLaptopCode size={16} /></span>
+
+              <div className="flex gap-3 items-start p-3.5 rounded-xl transition-all duration-200 hover:bg-[#C6A75E]/5" style={{ border: '1px solid rgba(31, 42, 68, 0.1)' }}>
+                <span className="p-2 bg-[#C6A75E]/10 rounded-lg text-[#C6A75E] mt-0.5 flex-shrink-0"><FaLaptopCode size={15} /></span>
                 <div>
                   <h4 className="font-poppins font-bold text-sm text-[#1F2A44]">Full Stack Systems</h4>
                   <p className="font-inter text-xs text-slate-500 leading-normal">Front-to-back architecture planning.</p>
                 </div>
               </div>
-              <div className="flex gap-3 items-start">
-                <span className="p-2 bg-cyan-50 rounded-lg text-[#1F2A44] mt-0.5"><FaDatabase size={16} /></span>
+              <div className="flex gap-3 items-start p-3.5 rounded-xl transition-all duration-200 hover:bg-[#1F2A44]/3" style={{ border: '1px solid rgba(31, 42, 68, 0.1)' }}>
+                <span className="p-2 bg-[#1F2A44]/8 rounded-lg text-[#1F2A44] mt-0.5 flex-shrink-0"><FaDatabase size={15} /></span>
                 <div>
                   <h4 className="font-poppins font-bold text-sm text-[#1F2A44]">Database Integrity</h4>
                   <p className="font-inter text-xs text-slate-500 leading-normal">Efficient index management & indexing.</p>
                 </div>
               </div>
-              <div className="flex gap-3 items-start">
-                <span className="p-2 bg-emerald-50 rounded-lg text-emerald-500 mt-0.5"><FaShieldAlt size={16} /></span>
+              <div className="flex gap-3 items-start p-3.5 rounded-xl transition-all duration-200 hover:bg-emerald-50/60" style={{ border: '1px solid rgba(31, 42, 68, 0.1)' }}>
+                <span className="p-2 bg-emerald-50 rounded-lg text-emerald-500 mt-0.5 flex-shrink-0"><FaShieldAlt size={15} /></span>
                 <div>
                   <h4 className="font-poppins font-bold text-sm text-[#1F2A44]">Secure Authorization</h4>
                   <p className="font-inter text-xs text-slate-500 leading-normal">JWT token authorization & encryption.</p>
                 </div>
               </div>
-              <div className="flex gap-3 items-start">
-                <span className="p-2 bg-purple-50 rounded-lg text-purple-500 mt-0.5"><FaCheckCircle size={16} /></span>
+              <div className="flex gap-3 items-start p-3.5 rounded-xl transition-all duration-200 hover:bg-purple-50/60" style={{ border: '1px solid rgba(31, 42, 68, 0.1)' }}>
+                <span className="p-2 bg-purple-50 rounded-lg text-purple-500 mt-0.5 flex-shrink-0"><FaCheckCircle size={15} /></span>
                 <div>
                   <h4 className="font-poppins font-bold text-sm text-[#1F2A44]">Deployment Pipelines</h4>
                   <p className="font-inter text-xs text-slate-500 leading-normal">Optimized bundles & cloud server deploys.</p>

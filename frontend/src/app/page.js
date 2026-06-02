@@ -96,18 +96,18 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar key={`nav-${synced}`} />
+      <Navbar />
       <main className="flex-grow">
-        <Hero key={`hero-${synced}`} />
+        <Hero />
         <Marquee />
-        <About key={`about-${synced}`} />
-        <Stats key={`stats-${synced}`} />
-        <Skills key={`skills-${synced}`} />
-        <Projects key={`projects-${synced}`} />
-        <Experience key={`experience-${synced}`} />
-        <Contact key={`contact-${synced}`} />
+        <About />
+        <Stats />
+        <Skills />
+        <Projects />
+        <Experience />
+        <Contact />
       </main>
-      <Footer key={`footer-${synced}`} />
+      <Footer />
     </div>
   );
 }

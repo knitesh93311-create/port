@@ -192,21 +192,27 @@ export default function Hero({ personalInfo: propPersonalInfo }) {
           
           <AnimatePresence mode="wait">
             {imageSrc ? (
-              /* Main Visual Photo Card — only shown if image is available */
               <motion.div
                 key="hero-photo"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.5 }}
-                className="w-full max-w-[420px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl relative group border border-slate-200/50"
+                className="w-full max-w-[420px] aspect-[4/5] relative group flex flex-col items-center justify-center pb-8"
               >
                 <img 
                   src={imageSrc} 
                   alt={personalInfo.name || "Nitesh Kumar"} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-102 filter drop-shadow-2xl z-10"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                
+                {/* Curved Cinematic Holographic Pedestal Line */}
+                <div 
+                  className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-[12px] rounded-[50%] border-t-2 border-[#06B6D4] shadow-[0_-3px_15px_rgba(6,182,212,0.8),0_0_8px_rgba(37,99,235,0.5)] pointer-events-none z-0"
+                  style={{
+                    background: "radial-gradient(ellipse at center, rgba(6,182,212,0.2) 0%, transparent 70%)"
+                  }}
+                />
               </motion.div>
             ) : (
               /* Main Visual Terminal Card — shown while image is loading */

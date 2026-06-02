@@ -18,7 +18,8 @@ import {
   experienceTimeline,
 } from '@/data/portfolioData';
 
-
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 async function fetchWithTimeout(url, options = {}, timeout = 800) {
   const controller = new AbortController();
@@ -40,7 +41,7 @@ async function getPortfolioData() {
   const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
   try {
     const res = await fetchWithTimeout(`${apiBase}/api/portfolio`, {
-      next: { revalidate: 60 } // Cache data for 60 seconds
+      cache: 'no-store'
     }, 800);
     if (res.ok) {
       return await res.json();
@@ -55,7 +56,7 @@ async function getProjectsData() {
   const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
   try {
     const res = await fetchWithTimeout(`${apiBase}/api/projects`, {
-      next: { revalidate: 60 } // Cache projects for 60 seconds
+      cache: 'no-store'
     }, 800);
     if (res.ok) {
       return await res.json();

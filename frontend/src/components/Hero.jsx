@@ -209,25 +209,6 @@ export default function Hero({ personalInfo: propPersonalInfo }) {
                     WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 97%)'
                   }}
                 />
-                
-                {/* Curved Cinematic Holographic Pedestal Line */}
-                <div 
-                  className="absolute bottom-[-8px] left-1/2 -translate-x-1/2 w-[85%] h-[16px] pointer-events-none z-20"
-                >
-                  {/* Outer glow flare */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#06B6D4]/30 to-transparent blur-[6px] rounded-[50%]" />
-                  
-                  {/* Core white/cyan glowing line */}
-                  <div 
-                    className="absolute inset-0 border-t-2 border-cyan-400 rounded-[50%]" 
-                    style={{
-                      boxShadow: '0 -2px 10px rgba(6, 182, 212, 0.6), inset 0 1px 4px rgba(255, 255, 255, 0.5)'
-                    }}
-                  />
-                  
-                  {/* Soft ambient ground reflection glow */}
-                  <div className="absolute -bottom-2 left-8 right-8 h-[6px] bg-gradient-to-r from-transparent via-[#06B6D4]/25 to-transparent blur-[4px] rounded-[50%]" />
-                </div>
               </motion.div>
             ) : (
               /* Main Visual Terminal Card — shown while image is loading */

@@ -22,17 +22,17 @@ export default function Resume({ personalInfo: propPersonalInfo }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-[#1F2A44] text-white rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-2xl relative overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+          className="bg-[#0B2C1F] text-white rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-2xl relative overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
         >
           {/* Decorative design nodes */}
-          <div className="absolute right-0 bottom-0 w-64 h-64 bg-[#C6A75E]/10 rounded-full blur-[80px] pointer-events-none" />
+          <div className="absolute right-0 bottom-0 w-64 h-64 bg-[#FF9100]/10 rounded-full blur-[80px] pointer-events-none" />
           
           {/* Left: Recruiters call out text */}
           <div className="lg:col-span-7 text-left">
-            <span className="font-manrope text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#1F2A44] mb-3 block">
+            <span className="font-manrope text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#0B2C1F] mb-3 block">
               RECRUITER PORTAL
             </span>
-            <h2 className="font-poppins font-black text-[#C6A75E]xl sm:text-4xl text-white leading-tight mb-4">
+            <h2 className="font-poppins font-black text-[#FF9100]xl sm:text-4xl text-white leading-tight mb-4">
               Ready To Bring Value <br />To Your Team
             </h2>
             <p className="font-inter text-slate-400 text-xs sm:text-sm leading-relaxed mb-8 max-w-lg">
@@ -46,7 +46,7 @@ export default function Resume({ personalInfo: propPersonalInfo }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 download="Nitesh_Kumar_Resume.pdf"
-                className="inline-flex items-center gap-2 font-inter text-xs sm:text-sm font-bold text-[#1F2A44] bg-white hover:bg-slate-100 active:scale-97 px-5 py-3 rounded-xl transition-all duration-200"
+                className="inline-flex items-center gap-2 font-inter text-xs sm:text-sm font-bold text-[#0B2C1F] bg-white hover:bg-slate-100 active:scale-97 px-5 py-3 rounded-xl transition-all duration-200"
               >
                 <FaDownload className="text-xs" />
                 Download Resume
@@ -62,7 +62,7 @@ export default function Resume({ personalInfo: propPersonalInfo }) {
 
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 font-inter text-xs sm:text-sm font-bold text-[#1F2A44] bg-[#1F2A44]/10 hover:bg-[#1F2A44]/15 active:scale-97 px-5 py-3 rounded-xl transition-all duration-200"
+                className="inline-flex items-center gap-2 font-inter text-xs sm:text-sm font-bold text-[#0B2C1F] bg-[#0B2C1F]/10 hover:bg-[#0B2C1F]/15 active:scale-97 px-5 py-3 rounded-xl transition-all duration-200"
               >
                 <FaEnvelope className="text-xs" />
                 Contact Me
@@ -74,7 +74,7 @@ export default function Resume({ personalInfo: propPersonalInfo }) {
           <div className="lg:col-span-5 flex justify-center">
             <div className="w-full max-w-[280px] bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-lg relative flex flex-col gap-3 font-mono text-[9px] text-slate-400 select-none text-left">
               <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-                <span className="font-bold text-[#1F2A44]">Nitesh_Kumar_CV.pdf</span>
+                <span className="font-bold text-[#0B2C1F]">Nitesh_Kumar_CV.pdf</span>
                 <FaFileAlt className="text-slate-600" />
               </div>
               <div className="flex flex-col gap-1.5">
@@ -122,9 +122,9 @@ export default function Resume({ personalInfo: propPersonalInfo }) {
               {/* Modal Header */}
               <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
                 <div className="flex items-center gap-3 text-left">
-                  <span className="p-2 bg-[#C6A75E]/10 text-[#C6A75E] rounded-xl"><FaFileAlt size={16} /></span>
+                  <span className="p-2 bg-[#FF9100]/10 text-[#FF9100] rounded-xl"><FaFileAlt size={16} /></span>
                   <div>
-                    <h3 className="font-poppins font-bold text-[#1F2A44] text-sm">Resume Preview</h3>
+                    <h3 className="font-poppins font-bold text-[#0B2C1F] text-sm">Resume Preview</h3>
                     <p className="font-manrope text-[10px] text-slate-400 font-semibold">Nitesh_Kumar_Resume.pdf</p>
                   </div>
                 </div>
@@ -133,7 +133,7 @@ export default function Resume({ personalInfo: propPersonalInfo }) {
                   <a
                     href={personalInfo.resumeUrl || "/resume.pdf"}
                     download="Nitesh_Kumar_Resume.pdf"
-                    className="inline-flex items-center gap-1.5 font-inter text-xs font-semibold text-white bg-[#C6A75E] hover:bg-[#B0934E] px-3.5 py-2 rounded-lg transition-colors shadow-sm"
+                    className="inline-flex items-center gap-1.5 font-inter text-xs font-semibold text-white bg-[#FF9100] hover:bg-[#E08000] px-3.5 py-2 rounded-lg transition-colors shadow-sm"
                   >
                     <FaDownload size={11} />
                     Download

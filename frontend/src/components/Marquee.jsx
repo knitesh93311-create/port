@@ -30,7 +30,7 @@ export default function Marquee() {
                 className="flex items-center gap-3 bg-white px-6 py-3 rounded-2xl border border-slate-200/60 shadow-sm hover:border-slate-300 hover:shadow transition-all duration-200"
               >
                 <Icon className={`text-xl ${tech.color}`} />
-                <span className="font-poppins text-sm font-semibold text-[#1F2A44]">
+                <span className="font-poppins text-sm font-semibold text-[#0B2C1F]">
                   {tech.name}
                 </span>
               </div>

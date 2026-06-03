@@ -30,7 +30,7 @@ export const trustedTechnologies = [
   { name: "MongoDB", icon: SiMongodb, color: "text-[#47A248]" },
   { name: "Express.js", icon: SiExpress, color: "text-[#000000]" },
   { name: "Redux", icon: SiRedux, color: "text-[#764ABC]" },
-  { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-[#1F2A44]" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-[#0B2C1F]" },
   { name: "Docker", icon: FaDocker, color: "text-[#2496ED]" },
   { name: "Git", icon: FaGitAlt, color: "text-[#F05032]" },
   { name: "GitHub", icon: FaGithub, color: "text-[#181717]" },

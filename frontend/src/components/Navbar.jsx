@@ -10,10 +10,7 @@ import { personalInfo as staticPersonalInfo } from '@/data/portfolioData';
 const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
   { name: 'Projects', href: '#projects' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Contact', href: '#contact' },
 ];
 
 export default function Navbar({ personalInfo: propPersonalInfo }) {
@@ -32,7 +29,7 @@ export default function Navbar({ personalInfo: propPersonalInfo }) {
       }
 
       // Check which section is in viewport
-      const sections = navLinks.map(link => link.href.substring(1));
+      const sections = ['home', 'about', 'projects'];
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
@@ -59,16 +56,16 @@ export default function Navbar({ personalInfo: propPersonalInfo }) {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'glass-nav py-4 shadow-sm' : 'bg-transparent py-6'
+          scrolled ? 'bg-[#0B2C1F]/90 backdrop-blur-md border-b border-[#154734]/50 py-4 shadow-md' : 'bg-transparent py-6'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2 group">
-            <span className="font-poppins font-extrabold tracking-tight bg-gradient-to-r from-[#C6A75E] to-[#1F2A44] bg-clip-text text-transparent group-hover:opacity-80 transition-opacity text-xl">
-              NITESH KUMAR
+            <span className="font-poppins tracking-wider text-xl uppercase flex items-center gap-1.5 font-bold">
+              <span className="text-white">NITESH</span>
+              <span className="text-[#FF9100] font-black">KUMAR</span>
             </span>
-
           </a>
 
           {/* Desktop Nav Links */}
@@ -80,14 +77,14 @@ export default function Navbar({ personalInfo: propPersonalInfo }) {
                   key={link.name}
                   href={link.href}
                   className={`font-inter text-sm font-medium transition-colors relative py-1 ${
-                    isActive ? 'text-[#C6A75E]' : 'text-[#334155] hover:text-[#C6A75E]'
+                    isActive ? 'text-[#FF9100]' : 'text-white/80 hover:text-[#FF9100]'
                   }`}
                 >
                   {link.name}
                   {isActive && (
                     <motion.span
                       layoutId="activeIndicator"
-                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#C6A75E] rounded-full"
+                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#FF9100] rounded-full"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -99,20 +96,17 @@ export default function Navbar({ personalInfo: propPersonalInfo }) {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center">
             <a
-              href={activePersonalInfo?.resumeUrl || "/resume.pdf"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-inter text-sm font-semibold text-white bg-[#C6A75E] hover:bg-[#B0934E] active:scale-95 px-5 py-2.5 rounded-lg shadow-sm shadow-[#C6A75E]/10 hover:shadow-[#C6A75E]/20 transition-all duration-200"
+              href="#contact"
+              className="inline-flex items-center font-inter text-sm font-bold text-white bg-[#FF9100] hover:bg-[#E08000] active:scale-95 px-6 py-2.5 rounded-full shadow-md shadow-[#FF9100]/20 hover:shadow-[#FF9100]/40 transition-all duration-200"
             >
-              <FaDownload className="text-xs" />
-              Download Resume
+              Contact Me
             </a>
           </div>
 
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen(true)}
-            className="md:hidden p-2 text-[#1F2A44] hover:bg-slate-100 rounded-lg transition-colors"
+            className="md:hidden p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
             aria-label="Open Navigation Menu"
           >
             <HiMenuAlt3 size={24} />
@@ -130,7 +124,7 @@ export default function Navbar({ personalInfo: propPersonalInfo }) {
               animate={{ opacity: 0.4 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 bg-[#1F2A44] z-50 md:hidden"
+              className="fixed inset-0 bg-[#0B2C1F] z-50 md:hidden"
             />
 
             {/* Sidebar drawer */}
@@ -144,8 +138,9 @@ export default function Navbar({ personalInfo: propPersonalInfo }) {
               <div>
                 {/* Header */}
                 <div className="flex items-center justify-between mb-8">
-                  <span className="font-poppins font-extrabold tracking-tight bg-gradient-to-r from-[#C6A75E] to-[#1F2A44] bg-clip-text text-transparent text-xl">
-                    NITESH KUMAR
+                  <span className="font-poppins tracking-wider text-xl uppercase flex items-center gap-1.5 font-bold">
+                    <span className="text-[#0B2C1F]">NITESH</span>
+                    <span className="text-[#FF9100] font-black">KUMAR</span>
                   </span>
                   <button
                     onClick={() => setMobileMenuOpen(false)}
@@ -167,8 +162,8 @@ export default function Navbar({ personalInfo: propPersonalInfo }) {
                         onClick={() => setMobileMenuOpen(false)}
                         className={`font-inter text-base font-semibold py-2 px-3 rounded-lg transition-colors ${
                           isActive
-                            ? 'text-[#C6A75E] bg-[#C6A75E]/10'
-                            : 'text-[#334155] hover:text-[#C6A75E] hover:bg-slate-50'
+                            ? 'text-[#FF9100] bg-[#FF9100]/10'
+                            : 'text-[#334155] hover:text-[#FF9100] hover:bg-slate-50'
                         }`}
                       >
                         {link.name}
@@ -186,7 +181,7 @@ export default function Navbar({ personalInfo: propPersonalInfo }) {
                   rel="noopener noreferrer"
                   download="Nitesh_Kumar_Resume.pdf"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full inline-flex items-center justify-center gap-2 font-inter text-base font-semibold text-white bg-[#C6A75E] hover:bg-[#B0934E] py-3.5 rounded-lg shadow-sm shadow-[#C6A75E]/10 transition-colors"
+                  className="w-full inline-flex items-center justify-center gap-2 font-inter text-base font-semibold text-white bg-[#FF9100] hover:bg-[#E08000] py-3.5 rounded-lg shadow-sm shadow-[#FF9100]/10 transition-colors"
                 >
                   <FaDownload className="text-sm" />
                   Download Resume

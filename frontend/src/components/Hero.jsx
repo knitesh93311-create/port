@@ -39,141 +39,111 @@ export default function Hero({ personalInfo: propPersonalInfo }) {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen pt-24 lg:pt-28 pb-16 px-6 overflow-hidden flex items-start radial-bg"
+      className="relative min-h-screen pt-32 lg:pt-40 pb-24 lg:pb-32 px-6 overflow-hidden flex items-center bg-[#0B2C1F]"
     >
-      {/* Background Orbs */}
-      <div className="absolute top-[20%] right-[10%] w-[400px] h-[400px] rounded-full bg-[#C6A75E]/10 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[10%] left-[5%] w-[350px] h-[350px] rounded-full bg-cyan-400/10 blur-[100px] pointer-events-none" />
+      {/* Floating Sparkle Stars */}
+      <motion.div
+        animate={{ opacity: [0.3, 1, 0.3], scale: [0.9, 1.1, 0.9] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[20%] left-[5%] text-[#FF9100] pointer-events-none hidden md:block"
+      >
+        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2.2c.4 3 2.8 5.4 5.8 5.8-3 .4-5.4 2.8-5.8 5.8-.4-3-2.8-5.4-5.8-5.8 3-.4 5.4-2.8 5.8-5.8z" />
+        </svg>
+      </motion.div>
 
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center z-10 mt-6 lg:mt-10">
+      <motion.div
+        animate={{ opacity: [1, 0.3, 1], scale: [1.1, 0.9, 1.1] }}
+        transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        className="absolute top-[25%] right-[5%] text-[#FF9100] pointer-events-none hidden md:block"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M10 2c.3 2.5 2.3 4.5 4.8 4.8-2.5.3-4.5 2.3-4.8 4.8-.3-2.5-2.3-4.5-4.8-4.8 2.5-.3 4.5-2.3 4.8-4.8z" />
+        </svg>
+      </motion.div>
+
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center z-10">
         
         {/* Left Side: Content */}
         <div className="lg:col-span-7 flex flex-col items-start text-left">
-
-          {/* Small Label */}
-          <motion.span
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="font-manrope text-xs font-bold uppercase tracking-[0.2em] text-[#1F2A44] mb-3"
-          >
-            {(personalInfo.title || "FULL STACK MERN DEVELOPER").toUpperCase()}
-          </motion.span>
-
-          {/* Main Headline */}
+          
+          {/* Main Headline styled like the reference */}
           <motion.h1
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="font-poppins font-extrabold text-4xl sm:text-[#C6A75E]xl lg:text-[#C6A75E]xl text-[#1F2A44] leading-[1.15] mb-6"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-poppins font-black text-5xl sm:text-6xl lg:text-7xl text-white leading-[1.1] mb-8 tracking-tight"
           >
-            {personalInfo.tagline ? (
-              personalInfo.tagline.includes("Digital Products") ? (
-                <>
-                  Building Scalable <br />
-                  <span className="bg-gradient-to-r from-[#C6A75E] to-[#1F2A44] bg-clip-text text-transparent">
-                    Digital Products
-                  </span> <br />
-                  With MERN Stack
-                </>
-              ) : personalInfo.tagline
-            ) : (
-              <>
-                Building Scalable <br />
-                <span className="bg-gradient-to-r from-[#C6A75E] to-[#1F2A44] bg-clip-text text-transparent">
-                  Digital Products
-                </span> <br />
-                With MERN Stack
-              </>
-            )}
+            Helping <br />
+            <span className="text-[#FF9100]">Businesses</span> Build <br />
+            Better Products <br />
+            With <span className="text-[#FF9100]">MERN</span>.
           </motion.h1>
 
-          {/* Subheadline */}
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
+          {/* Subheadline with vertical highlight line */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="font-inter text-base sm:text-lg text-[#334155] leading-relaxed max-w-2xl mb-8"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex gap-4 items-stretch mb-8 max-w-xl text-left border-l-[3px] border-[#FF9100] pl-4"
           >
-            {personalInfo.bio || "I design and develop modern, responsive, and high-performance web applications using MongoDB, Express.js, React.js, and Node.js with a strong focus on user experience, scalability, and clean architecture."}
-          </motion.p>
+            <p className="font-inter text-slate-300 text-sm md:text-base leading-relaxed">
+              I am a passionate Full Stack MERN Developer skilled in MongoDB, Express.js, React, Node.js, and REST APIs, transforming complex business requirements and user ideas into highly scalable, performant web applications.
+            </p>
+          </motion.div>
 
           {/* CTA Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-wrap gap-4 w-full sm:w-auto mb-10"
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-wrap items-center gap-6 mb-12"
           >
             <a
               href="#projects"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 font-inter text-sm font-bold text-white bg-[#C6A75E] hover:bg-[#B0934E] active:scale-98 px-7 py-4 rounded-xl shadow-lg shadow-[#C6A75E]/20 transition-all duration-200"
+              className="inline-flex items-center gap-2 font-inter text-sm font-bold text-[#0B2C1F] bg-white hover:bg-slate-100 hover:scale-[1.02] active:scale-98 px-7 py-3.5 rounded-full shadow-lg transition-all duration-200"
             >
-              View My Work
-              <FaArrowRight className="text-xs" />
+              <span>View Projects</span>
+              <FaArrowRight size={12} />
             </a>
             
             <a
               href={personalInfo.resumeUrl || "/resume.pdf"}
               target="_blank"
               rel="noopener noreferrer"
-              download="Nitesh_Kumar_Resume.pdf"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 font-inter text-sm font-bold text-[#334155] bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 active:scale-98 px-7 py-4 rounded-xl shadow-sm transition-all duration-200"
+              className="inline-flex items-center gap-3 font-inter text-sm font-bold text-white hover:text-[#FF9100] group transition-all duration-200"
             >
-              <FaDownload className="text-xs" />
-              Download Resume
-            </a>
-
-            <a
-              href="#contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 font-inter text-sm font-bold text-[#C6A75E] bg-[#C6A75E]/10 hover:bg-[#C6A75E]/15 active:scale-98 px-7 py-4 rounded-xl transition-all duration-200"
-            >
-              <FaBriefcase className="text-xs" />
-              Hire Me
+              <span className="w-10 h-10 rounded-full bg-[#FF9100]/20 group-hover:bg-[#FF9100] flex items-center justify-center text-[#FF9100] group-hover:text-white transition-all duration-200">
+                <FaDownload size={13} />
+              </span>
+              <span>Resume</span>
             </a>
           </motion.div>
 
-          {/* Social Links */}
+          {/* Stats section separated by divider line */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="flex items-center gap-4 border-t border-slate-100 pt-6 w-full"
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="w-full max-w-md border-t border-white/10 pt-8 grid grid-cols-2 gap-8 text-left"
           >
-            <span className="font-manrope text-xs font-bold text-slate-400 tracking-wider uppercase mr-2">
-              Connect:
-            </span>
-            <a
-              href={personalInfo.github || "https://github.com"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 bg-white border border-slate-200 rounded-xl text-slate-600 hover:text-[#1F2A44] hover:border-slate-300 hover:shadow-sm transition-all duration-200"
-              aria-label="GitHub Profile"
-            >
-              <FaGithub size={18} />
-            </a>
-            <a
-              href={personalInfo.linkedin || "https://linkedin.com"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 bg-white border border-slate-200 rounded-xl text-[#0077B5] hover:border-slate-300 hover:shadow-sm transition-all duration-200"
-              aria-label="LinkedIn Profile"
-            >
-              <FaLinkedin size={18} />
-            </a>
-            <a
-              href={personalInfo.email ? `mailto:${personalInfo.email}` : "mailto:niteshkumar.dev.mern@gmail.com"}
-              className="p-3 bg-white border border-slate-200 rounded-xl text-[#EA4335] hover:border-slate-300 hover:shadow-sm transition-all duration-200"
-              aria-label="Email Nitesh"
-            >
-              <FaEnvelope size={18} />
-            </a>
+            <div>
+              <div className="font-poppins font-black text-4xl text-white">20+</div>
+              <div className="font-inter text-xs text-slate-400 mt-1 leading-normal font-semibold">
+                Live Projects<br />Completed
+              </div>
+            </div>
+            <div>
+              <div className="font-poppins font-black text-4xl text-white">50+</div>
+              <div className="font-inter text-xs text-slate-400 mt-1 leading-normal font-semibold">
+                GitHub<br />Repositories
+              </div>
+            </div>
           </motion.div>
         </div>
 
-        {/* Right Side: Visual Artwork */}
-        <div className="lg:col-span-5 relative flex justify-center items-end h-[450px] lg:h-[550px] mt-10 lg:mt-0">
-          
+        {/* Right Side: Visual Arched Frame */}
+        <div className="lg:col-span-5 relative flex justify-center items-end mt-16 lg:mt-0">
           <AnimatePresence mode="wait">
             {imageSrc ? (
               <motion.div
@@ -182,68 +152,91 @@ export default function Hero({ personalInfo: propPersonalInfo }) {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.5 }}
-                className="w-full max-w-[440px] aspect-[4/5] relative group flex flex-col items-center justify-end overflow-visible"
+                className="w-full max-w-[340px] sm:max-w-[370px] aspect-[3.5/5] relative flex items-end justify-center overflow-visible"
               >
+                {/* Arch Background Container */}
+                <div className="absolute bottom-0 w-full h-[85%] rounded-t-full bg-[#13402C] border border-[#1E543D] shadow-2xl z-0" />
+                
+                {/* Developer Image sitting on the bottom and popping out the top */}
                 <img 
                   src={imageSrc} 
                   alt={personalInfo.name || "Nitesh Kumar"} 
-                  className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-[1.01] filter drop-shadow-2xl z-10 relative -translate-y-6"
+                  className="w-[95%] h-auto max-h-[105%] object-contain transition-transform duration-500 hover:scale-[1.02] filter drop-shadow-2xl z-10 relative translate-y-1"
                   style={{
-                    maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 97%)',
-                    WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 97%)'
+                    maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%)',
+                    WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%)'
                   }}
                 />
+
+                {/* Floating Stats Badge */}
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ 
+                    opacity: 1, 
+                    x: 0,
+                    y: [0, -6, 0]
+                  }}
+                  transition={{
+                    y: {
+                      duration: 4,
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                      ease: "easeInOut"
+                    },
+                    default: { duration: 0.6, delay: 0.5 }
+                  }}
+                  className="absolute left-[-20px] sm:left-[-35px] bottom-[30%] bg-white rounded-2xl p-4 shadow-xl border border-slate-100 flex items-center gap-3 z-20 max-w-[175px] text-left"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-[#FF9100]/10 flex items-center justify-center text-[#FF9100] shrink-0">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2m0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="font-poppins font-black text-base text-slate-800 leading-none">20+</div>
+                    <div className="font-inter text-[10px] text-slate-400 font-bold mt-1 uppercase tracking-wider">Completed Projects</div>
+                  </div>
+                </motion.div>
               </motion.div>
             ) : (
-              /* Main Visual Terminal Card — shown while image is loading */
+              /* Fallback Graphics inside Arch */
               <motion.div
                 key="hero-terminal"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.5 }}
-                className="w-full max-w-[420px] aspect-[4/5] glass-card-dark rounded-3xl p-6 shadow-2xl relative overflow-hidden flex flex-col justify-between"
+                className="w-full max-w-[340px] sm:max-w-[370px] aspect-[3.5/5] relative flex items-end justify-center overflow-visible"
               >
-                {/* Terminal Top Window Dots */}
-                <div className="flex items-center gap-2 mb-6 border-b border-slate-800 pb-4">
-                  <span className="w-3.5 h-3.5 rounded-full bg-[#EF4444]" />
-                  <span className="w-3.5 h-3.5 rounded-full bg-[#F59E0B]" />
-                  <span className="w-3.5 h-3.5 rounded-full bg-[#10B981]" />
-                  <span className="ml-4 font-mono text-xs text-slate-500">nitesh-developer.js</span>
-                </div>
-
-                {/* Simulated Code Snip */}
-                <div className="font-mono text-xs text-slate-300 leading-relaxed flex-grow text-left">
-                  <p className="text-slate-500">// Initialize MERN Project</p>
-                  <p><span className="text-[#F43F5E]">const</span> developer = &#123;</p>
-                  <p className="pl-4">name: <span className="text-[#E8DCC8]">&apos;Nitesh Kumar&apos;</span>,</p>
-                  <p className="pl-4">role: <span className="text-[#E8DCC8]">&apos;Full Stack Engineer&apos;</span>,</p>
-                  <p className="pl-4">coreStack: [<span className="text-[#34D399]">&apos;MongoDB&apos;, &apos;Express&apos;, &apos;React&apos;, &apos;Node&apos;</span>],</p>
-                  <p className="pl-4">mission: <span className="text-[#FBBF24]">&apos;Build Clean & Scalable Products&apos;</span>,</p>
-                  <p className="pl-4">availability: <span className="text-[#34D399]">true</span></p>
-                  <p>&#125;;</p>
-                  <br />
-                  <p className="text-slate-500">// Express Route</p>
-                  <p>app.get(<span className="text-[#E8DCC8]">&apos;/api/value-created&apos;</span>, (req, res) =&gt; &#123;</p>
-                  <p className="pl-4 text-[#F43F5E]">return <span className="text-white">res.status(200).json(&#123;</span></p>
-                  <p className="pl-8">impact: <span className="text-[#E8DCC8]">&apos;High-Performance SaaS Architectures&apos;</span>,</p>
-                  <p className="pl-8">recruiterStatus: <span className="text-[#E8DCC8]">&apos;Ready to hire&apos;</span></p>
-                  <p className="pl-4 text-white">&#125;);</p>
-                  <p>&#125;);</p>
-                </div>
-
-                {/* Simulated Git Output Status */}
-                <div className="bg-[#1F2A44] rounded-xl p-3 border border-slate-800 text-left">
-                  <span className="text-[#1F2A44] text-xs font-mono">$ git commit -m &quot;Ready for production&quot;</span>
-                  <p className="text-emerald-400 text-xs font-mono mt-1">✓ Build success. Ready for enterprise launch.</p>
+                {/* Arch Background Container */}
+                <div className="absolute bottom-0 w-full h-[85%] rounded-t-full bg-[#13402C] border border-[#1E543D] shadow-2xl z-0" />
+                <div className="w-[85%] h-[75%] bg-[#0B2C1F]/80 backdrop-blur-sm rounded-t-full z-10 border border-slate-700/50 p-6 flex flex-col justify-between font-mono text-[10px] text-slate-300 mb-6 overflow-hidden">
+                  <div className="flex gap-1 border-b border-slate-800 pb-2">
+                    <span className="w-2 h-2 rounded-full bg-red-500" />
+                    <span className="w-2 h-2 rounded-full bg-yellow-500" />
+                    <span className="w-2 h-2 rounded-full bg-green-500" />
+                  </div>
+                  <div className="flex-grow flex flex-col justify-center text-left py-2">
+                    <p className="text-slate-500">// MERN Stack Developer</p>
+                    <p className="text-[#FF9100] font-bold">const nitesh = &#123;</p>
+                    <p className="pl-2">role: &apos;MERN Stack&apos;,</p>
+                    <p className="pl-2 text-emerald-400">status: &apos;available&apos;</p>
+                    <p className="text-[#FF9100] font-bold">&#125;;</p>
+                  </div>
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
-
         </div>
+
+      </div>
+
+      {/* Curved SVG Wave Transition at the bottom of the section */}
+      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-[0] transform translate-y-[1px] z-10">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-[40px] md:h-[60px] lg:h-[80px] fill-[#f8fafc]">
+          <path d="M0,60 C300,100 600,80 900,30 C1050,10 1150,5 1200,0 L1200,120 L0,120 Z"></path>
+        </svg>
       </div>
     </section>
   );
 }
-

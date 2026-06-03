@@ -13,8 +13,8 @@ const iconMap = {
 };
 
 const colorMap = {
-  1: "text-[#C6A75E] bg-[#C6A75E]/10 border-[#C6A75E]/20",
-  2: "text-[#1F2A44] bg-cyan-50 border-cyan-100",
+  1: "text-[#FF9100] bg-[#FF9100]/10 border-[#FF9100]/20",
+  2: "text-[#0B2C1F] bg-cyan-50 border-cyan-100",
   3: "text-emerald-500 bg-emerald-50 border-emerald-100",
   4: "text-purple-500 bg-purple-50 border-purple-100"
 };
@@ -44,7 +44,7 @@ function StatCounter({ target, suffix = "+" }) {
   }, [isInView, target]);
 
   return (
-    <span ref={ref} className="font-poppins font-black text-4xl sm:text-[#C6A75E]xl text-[#1F2A44]">
+    <span ref={ref} className="font-poppins font-black text-4xl sm:text-[#FF9100]xl text-[#0B2C1F]">
       {count}{suffix}
     </span>
   );
@@ -59,7 +59,7 @@ export default function Stats({ aboutStats: propAboutStats }) {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {aboutStats.map((stat, index) => {
             const Icon = iconMap[stat.id] || FaCode;
-            const styleColor = colorMap[stat.id] || "text-[#C6A75E] bg-[#C6A75E]/10";
+            const styleColor = colorMap[stat.id] || "text-[#FF9100] bg-[#FF9100]/10";
             return (
               <motion.div
                 key={stat.id}

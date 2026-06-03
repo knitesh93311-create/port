@@ -36,28 +36,6 @@ export default function Hero({ personalInfo: propPersonalInfo }) {
     }
   }, [personalInfo.heroImage]);
 
-  const handleDownloadResume = async (e) => {
-    e.preventDefault();
-    try {
-      const url = personalInfo.resumeUrl || "/resume.pdf";
-      const response = await fetch(url);
-      const blob = await response.blob();
-      const blobUrl = window.URL.createObjectURL(blob);
-      
-      const link = document.createElement('a');
-      link.href = blobUrl;
-      link.setAttribute('download', 'Nitesh_Kumar_Resume.pdf');
-      document.body.appendChild(link);
-      link.click();
-      link.parentNode.removeChild(link);
-      window.URL.revokeObjectURL(blobUrl);
-    } catch (error) {
-      console.error("Error downloading resume:", error);
-      // Fallback in case of CORS or other errors
-      window.open(personalInfo.resumeUrl || "/resume.pdf", "_blank");
-    }
-  };
-
   return (
     <section 
       id="home" 
@@ -130,8 +108,7 @@ export default function Hero({ personalInfo: propPersonalInfo }) {
             </a>
             
             <a
-              href={personalInfo.resumeUrl || "/resume.pdf"}
-              onClick={handleDownloadResume}
+              href={`/api/download?url=${encodeURIComponent(personalInfo.resumeUrl || '/resume.pdf')}`}
               className="inline-flex items-center gap-3 font-inter text-sm font-bold text-white hover:text-[#FF9100] group transition-all duration-200"
             >
               <span className="w-10 h-10 rounded-full bg-[#FF9100]/20 group-hover:bg-[#FF9100] flex items-center justify-center text-[#FF9100] group-hover:text-white transition-all duration-200">

@@ -36,6 +36,28 @@ export default function Hero({ personalInfo: propPersonalInfo }) {
     }
   }, [personalInfo.heroImage]);
 
+  const handleDownloadResume = async (e) => {
+    e.preventDefault();
+    try {
+      const url = personalInfo.resumeUrl || "/resume.pdf";
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+      
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.setAttribute('download', 'Nitesh_Kumar_Resume.pdf');
+      document.body.appendChild(link);
+      link.click();
+      link.parentNode.removeChild(link);
+      window.URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      console.error("Error downloading resume:", error);
+      // Fallback in case of CORS or other errors
+      window.open(personalInfo.resumeUrl || "/resume.pdf", "_blank");
+    }
+  };
+
   return (
     <section 
       id="home" 
@@ -109,8 +131,7 @@ export default function Hero({ personalInfo: propPersonalInfo }) {
             
             <a
               href={personalInfo.resumeUrl || "/resume.pdf"}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={handleDownloadResume}
               className="inline-flex items-center gap-3 font-inter text-sm font-bold text-white hover:text-[#FF9100] group transition-all duration-200"
             >
               <span className="w-10 h-10 rounded-full bg-[#FF9100]/20 group-hover:bg-[#FF9100] flex items-center justify-center text-[#FF9100] group-hover:text-white transition-all duration-200">
@@ -167,36 +188,6 @@ export default function Hero({ personalInfo: propPersonalInfo }) {
                     WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%)'
                   }}
                 />
-
-                {/* Floating Stats Badge */}
-                <motion.div
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ 
-                    opacity: 1, 
-                    x: 0,
-                    y: [0, -6, 0]
-                  }}
-                  transition={{
-                    y: {
-                      duration: 4,
-                      repeat: Infinity,
-                      repeatType: "reverse",
-                      ease: "easeInOut"
-                    },
-                    default: { duration: 0.6, delay: 0.5 }
-                  }}
-                  className="absolute left-[-20px] sm:left-[-35px] bottom-[30%] bg-white rounded-2xl p-4 shadow-xl border border-slate-100 flex items-center gap-3 z-20 max-w-[175px] text-left"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-[#FF9100]/10 flex items-center justify-center text-[#FF9100] shrink-0">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2m0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <div className="font-poppins font-black text-base text-slate-800 leading-none">20+</div>
-                    <div className="font-inter text-[10px] text-slate-400 font-bold mt-1 uppercase tracking-wider">Completed Projects</div>
-                  </div>
-                </motion.div>
               </motion.div>
             ) : (
               /* Fallback Graphics inside Arch */
